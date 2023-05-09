@@ -1,3 +1,5 @@
+'use client';
+
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -15,7 +17,7 @@ export default productsSlice.reducer;
 export const getProducts = () => (dispatch) => {
   return axios.get("https://crud-products-node.onrender.com/api/v1/products")
     .then(res => {
-      console.log(res.data.response);
+      // console.log(res.data.response);
       const products = res.data.response
       dispatch(setProducts(products))
     })
