@@ -1,8 +1,18 @@
-.indexContainer {
-  // min-height: 100vh;
-  // background-color: gray;
-}
-
 .title {
   color: blue;
+}
+
+@media screen and (min-width:768px){
+  .productSection{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1rem;
+  }
+}
+
+@media screen and (min-width:1200px){
+  .productSection{
+    grid-template-columns: repeat(5,1fr);
+
+  }
 }

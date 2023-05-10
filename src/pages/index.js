@@ -16,23 +16,25 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const dispatch = useDispatch();
-  const products = useSelector(state=>state.products);
+  const products = useSelector(state => state.products);
 
   useEffect(() => {
     dispatch(getProducts());
   }, [])
-  console.log(products)
 
+  console.log(products);
 
   return (
     <MainLayout>
-      <section className={`container ${styles.indexContainer} ${inter.className}`}>
-        <h1 className={styles.title}>main</h1>
-        {
-          products?.map((product)=>(
-            <ProductCard product={product} key={product.id} />
-          ))
-        }
+      <section className={`${styles.indexContainer} ${inter.className}`}>
+        <h1 className={styles.title}>PRODUCTS</h1>
+        <section className={styles.productSection}>
+          {
+            products?.map((product) => (
+              <ProductCard product={product} key={product.id} />
+            ))
+          }
+        </section>
       </section>
     </MainLayout>
   )
