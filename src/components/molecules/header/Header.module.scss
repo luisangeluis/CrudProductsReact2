@@ -1,15 +1,84 @@
-.header{
+.header {
+  padding: 1rem;
   position: fixed;
-  top:0;
+  top: 0;
   width: 100%;
-  height: 7rem;
   background-color: var(--color-white);
-  
+  min-height: initial;
+  transition: all ease-in-out 1s;
 }
-@media screen and (min-width:768px){
-  .header{
+
+.logoSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+
+  a {
+    // display: block;
+    width: 10rem;
+    height: inherit;
+
+    display: block;
+    
+  }
+
+  .logo {
+    max-height: 100%;
+    max-width: 100%;
+    
+    // width: 100%;
+    // height: 100%;
+  }
+}
+
+.toogleButton {
+  padding: .1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 5px;
+  background-color: var(--color-three);
+  color: var(--color-white);
+}
+
+.navbar {
+  max-height: 0;
+  overflow: hidden;
+
+  &.heightAuto {
+    max-height: 100vh;
+    transition: max-height ease-in-out 500ms;
+
+  }
+
+  button {
+    padding: 1rem;
+    background-color: var(--color-three);
+    color: var(--color-white);
+    border-radius: 5px;
+    font-weight: bolder;
+
+  }
+}
+
+
+
+@media screen and (min-width:768px) {
+  .header {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+  }
+
+  .navbar {
+    width: 70%;
+    max-height: 100vh;
+
+    ul {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 1rem;
+    }
   }
 }

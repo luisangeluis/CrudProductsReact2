@@ -1,5 +1,8 @@
 .title {
-  color: blue;
+  padding: 1rem;
+  color: var(--color-four);
+  font-weight: bold;
+  font-size: 2rem;
 }
 
 @media screen and (min-width:768px){

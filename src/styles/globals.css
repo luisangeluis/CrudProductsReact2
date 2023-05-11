@@ -10,6 +10,8 @@
   --color-five:#88d8b0;
   --color-gray:#e5e5e5;
   --color-white:#ffffff;
+  --color-black:#000000;
+  --color-bg-modal:#00000050;
 }
 *{
   margin: 0;

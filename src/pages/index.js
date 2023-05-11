@@ -1,7 +1,6 @@
 'use client';
 
 //Dependencies
-import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -21,8 +20,6 @@ export default function Home() {
   useEffect(() => {
     dispatch(getProducts());
   }, [])
-
-  console.log(products);
 
   return (
     <MainLayout>

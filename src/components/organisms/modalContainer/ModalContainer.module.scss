@@ -1,0 +1,18 @@
+.ModalContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  inset:0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background-color:var(--color-bg-modal);
+}
+.closeSection{
+
+}
+.modalBody{
+  padding: 1rem;
+  background-color: var(--color-white);
+}
