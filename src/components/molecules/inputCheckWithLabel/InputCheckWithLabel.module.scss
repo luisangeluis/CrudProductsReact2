@@ -1,0 +1,14 @@
+.inputCheckContainer{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 1rem auto;
+}
+.labelContainer{
+  margin: auto .5rem;
+}
+.label{
+  color: var(--color-three);
+  font-size: 1.2rem;
+  font-weight: bolder;
+}

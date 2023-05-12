@@ -1,0 +1,19 @@
+.form{
+  width: 100%;
+  padding: 1rem;
+  flex-grow: 1;
+}
+.title{
+  color: var(--color-black);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.submit{
+  padding: .5rem 1rem;
+  border: solid 1px silver;
+  border-radius: 7px;
+
+  &:hover{
+    opacity: .7;
+  }
+}

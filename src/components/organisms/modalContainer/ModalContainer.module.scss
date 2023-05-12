@@ -10,9 +10,19 @@
   background-color:var(--color-bg-modal);
 }
 .closeSection{
-
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 .modalBody{
+  display: flex;
+  justify-content: space-between;
+  // align-items: center;
+  flex-direction: column;
   padding: 1rem;
+  min-width: 33.33%;
+  min-height: 50%;
   background-color: var(--color-white);
+  border-radius: 5px;
+
 }
