@@ -12,10 +12,10 @@ import SelectWithLabel from '../selectWithLabel/SelectWithLabel'
 import TextAreaWithLabel from '../textAreaWithLabel/TextAreaWithLabel'
 import InputCheckWithLabel from "../inputCheckWithLabel/InputCheckWithLabel";
 
-const options = [
-  { value: "a", title: "a" },
-  { value: "b", title: "b" }
-];
+// const options = [
+//   { value: "a", title: "a" },
+//   { value: "b", title: "b" }
+// ];
 
 const FormProduct = ({ setIsOpen }) => {
   const { register, handleSubmit, watch, formState: { errors }, control } = useForm();

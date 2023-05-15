@@ -28,7 +28,16 @@ export const getProducts = () => (dispatch) => {
 }
 
 export const createProduct = (data) => (dispatch) => {
-  return axios.post(`${baseUrl}/api/v1/products`,data)
+  return axios.post(`${baseUrl}/api/v1/products`, data)
+    .then(res => {
+      console.log(res)
+      dispatch(getProducts());
+    })
+    .catch((error) => console.log(error));
+}
+
+export const deleteProduct = (productId) => (dispatch) => {
+  return axios.delete(`${baseUrl}/api/v1/products/${productId}`)
     .then(res => {
       console.log(res)
       dispatch(getProducts());
