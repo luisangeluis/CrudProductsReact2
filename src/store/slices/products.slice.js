@@ -2,6 +2,7 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+const baseUrl = process.env.API_URL;
 
 export const productsSlice = createSlice({
   name: "products",
@@ -24,4 +25,13 @@ export const getProducts = () => (dispatch) => {
     .catch(error => {
       console.log(error);
     })
+}
+
+export const createProduct = (data) => (dispatch) => {
+  return axios.post(`${baseUrl}/api/v1/products`,data)
+    .then(res => {
+      console.log(res)
+      dispatch(getProducts());
+    })
+    .catch((error) => console.log(error));
 }

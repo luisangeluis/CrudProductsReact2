@@ -60,7 +60,7 @@ const Header = () => {
         </nav>
       </header>
       <ModalContainer isOpen={isOpenModal} setIsOpen={setIsOpenModal}>
-        <FormProduct />
+        <FormProduct setIsOpen={setIsOpenModal}/>
       </ModalContainer>
     </>
   )

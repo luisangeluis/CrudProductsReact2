@@ -1,4 +1,9 @@
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import axios from "axios";
+//Slices
+import { createProduct } from "@/store/slices/products.slice";
 //Styles
 import styles from "./FormProduct.module.scss";
 //Components
@@ -12,43 +17,65 @@ const options = [
   { value: "b", title: "b" }
 ];
 
-const FormProduct = () => {
+const FormProduct = ({ setIsOpen }) => {
   const { register, handleSubmit, watch, formState: { errors }, control } = useForm();
+  const dispatch = useDispatch();
+  const [categories, setCategories] = useState();
+
+  console.log(categories);
+
+  useEffect(() => {
+    getProductCategories()
+  }, [])
+
+  const getProductCategories = () => {
+    const api = process.env.API_URL;
+
+    axios.get(`${api}/api/v1/productCategories`)
+      .then(res => {
+        const options = [];
+        const data = res.data.response;
+
+        data.map(category => {
+          const option = { value: category.id, title: category.name }
+          options.push(option);
+        })
+
+        setCategories(options)
+      })
+      .catch(error => console.log(error));
+  }
 
   const onSubmit = data => {
     console.log(data);
+    setIsOpen(false);
+    dispatch(createProduct(data));
   }
 
-  
+  // const 
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <h2 className={styles.title}>Create a product</h2>
 
-      <InputWithLabel type="text" label="Product name"
+      <InputWithLabel id="name" name="name" type="text" label="Product name"
         register={{ ...register("name", { required: true }) }} />
-      {errors?.name && <p>This field is required</p>}
-
+      {errors?.name && <p className={styles.error}>This field is required</p>}
       <TextAreaWithLabel id="description" name="description" label="Description"
         register={{ ...register("description", { required: true }) }} />
-      {errors.description && <span>This field is required</span>}
-
+      {errors.description && <p className={styles.error}>This field is required</p>}
       <InputWithLabel id="brand" name="brand" type="text" label="Brand"
         register={{ ...register("brand", { required: true }) }} />
-      {errors.brand && <span>This field is required</span>}
-
+      {errors.brand && <p className={styles.error}>This field is required</p>}
       <InputWithLabel id="price" name="price" type="number" label="Price"
         register={{ ...register("price", { required: true }) }} />
-      {errors.price && <span>This field is required</span>}
-
-
-      <SelectWithLabel id="category" name="category" options={options} label="Category"
-        register={{ ...register("category", { required: true }) }} />
-      {errors.category && <p>This field is required</p>}
-
+      {errors.price && <p className={styles.error}>This field is required</p>}
+      <SelectWithLabel id="productCategoryId" name="productCategoryId" options={categories} label="Category"
+        register={{ ...register("productCategoryId", { required: true }) }} />
+      {errors.productCategoryId && <p className={styles.error}>This field is required</p>}
       <InputCheckWithLabel id="active" name="active" label="Is Active?"
         register={{ ...register("active") }} />
-      {errors.active && <span>This field is required</span>}
+      {errors.active && <p className={styles.error}>This field is required</p>}
 
       <button type="submit" className={styles.submit}>Send</button>
     </form>
