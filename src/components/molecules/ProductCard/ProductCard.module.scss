@@ -7,8 +7,25 @@
   height: 60vh;
   text-align: center;
   background-color: #fff;
-  box-shadow: 5px 5px 8px 2px gray;
+  box-shadow: 2px 2px 7px 2px gray;
   border-radius: 10px;
+  background-color: var(--color-one);
+  position: relative;
+
+  .cardTitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .cardText {
+    color: var(--color-black);
+    font-weight: bold;
+  }
+
+  .cardSubtitle {
+    // color: var(--color-two);
+    font-weight: bold;
+  }
 
   .cardBody {
     display: flex;
@@ -18,6 +35,11 @@
     padding: 1rem .5rem;
     width: 100%;
     height: 80%;
+    background-color: var(--color-white);
+    // border-radius: 10px;
+    border-top-left-radius:10px ;
+    border-top-right-radius: 10px;
+
   }
 
   .imageContainer {
@@ -25,7 +47,7 @@
     justify-content: center;
     align-items: center;
     height: 75%;
-    background-color: var(--color-gray);
+    // background-color: var(--color-gray);
   }
 
   .cardImage {
@@ -39,20 +61,35 @@
     align-items: center;
     text-align: center;
     gap: .5rem;
-    
     width: 100%;
     height: 20%;
-    background-color: var(--color-five);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 
+    .cardBtn:nth-child(1) {
+      padding: .8rem;
+      text-align: center;
+      position: absolute;
+      top: -.3rem;
+      right: -.3rem;
+      width: 2.8rem;
+      height: 2.8rem;
+      background-color: var(--color-three);
+      border-radius: 50%;
+    }
+
+    .cardBtn:nth-child(2) {
+      background-color: var(--color-four);
+    }
+
   }
-  .cardBtn{
+
+  .cardBtn {
     padding: .5rem 1rem;
-    background-color: var(--color-three);
+    // background-color: var(--color-three);
     color: var(--color-white);
-    font-weight: bolder;
-    border-radius:8px ;
+    font-weight: bold;
+    border-radius: 8px;
   }
 }
 

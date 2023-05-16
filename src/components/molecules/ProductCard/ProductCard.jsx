@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import {BsFillTrashFill} from "react-icons/bs";
 //Slices
 import { deleteProduct } from "@/store/slices/products.slice";
 //Utils
@@ -10,15 +11,18 @@ import styles from "./ProductCard.module.scss";
 import Image from "next/image";
 import ModalContainer from "@/components/organisms/modalContainer/ModalContainer";
 import ConfirmationDialog from "../confirmationDialog/ConfirmationDialog";
+import FormProduct from "../formProduct/FormProduct";
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch()
   const [isOpenDialog, setIsOpenDialog] = useState(false);
+  const [isOpenFormProduct, setIsOpenFormProduct] = useState(false);
 
   const handleClickDelete = () => {
-    // dispatch(deleteProduct(product.id));
     setIsOpenDialog(true);
   }
+
+  const handleClickEdit = () => setIsOpenFormProduct(true);
 
   return (
     <>
@@ -33,13 +37,16 @@ const ProductCard = ({ product }) => {
           <h4 className={styles.cardSubtitle}>${product.price}</h4>
         </div>
         <div className={styles.cardFooter}>
-          <button onClick={handleClickDelete} className={styles.cardBtn}>Delete</button>
-          <button className={styles.cardBtn}>Edit</button>
+          <button onClick={handleClickDelete} className={styles.cardBtn}><BsFillTrashFill size={"100%"}/></button>
+          <button onClick={handleClickEdit} className={styles.cardBtn}>Edit</button>
         </div>
       </article>
       <ModalContainer isOpen={isOpenDialog} setIsOpen={setIsOpenDialog}>
         <ConfirmationDialog message="Are you sure you want to delete this item?" setIsOpen={setIsOpenDialog}
           itemId={product.id} />
+      </ModalContainer>
+      <ModalContainer isOpen={isOpenFormProduct} setIsOpen={setIsOpenFormProduct}>
+        <FormProduct product={product} setIsOpen={setIsOpenFormProduct} />
       </ModalContainer>
     </>
   )

@@ -44,3 +44,12 @@ export const deleteProduct = (productId) => (dispatch) => {
     })
     .catch((error) => console.log(error));
 }
+
+export const editProduct=(productId,data)=>(dispatch)=>{
+  return axios.put(`${baseUrl}/api/v1/products/${productId}`,data)
+    .then(res=>{
+      console.log(res);
+      dispatch(getProducts());
+    })
+    .catch(error=>console.log(error));
+}

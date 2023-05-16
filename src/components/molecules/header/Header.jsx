@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { AiOutlineMenu } from 'react-icons/ai'
 //Styles
 import styles from "./Header.module.scss";
 //Components
@@ -30,10 +31,7 @@ const Header = () => {
     }
   }
 
-  const handleClickNav = () => {
-    navbar.current.classList.toggle(`${styles.heightAuto}`);
-  }
-
+  const handleClickNav = () => navbar.current.classList.toggle(`${styles.heightAuto}`);
   const handleClickModal = () => setIsOpenModal(!isOpenModal);
 
   return (
@@ -49,7 +47,7 @@ const Header = () => {
             <button onClick={handleClickNav}
               className={styles.toogleButton}
             >
-              click
+              <AiOutlineMenu size={"100%"}/> 
             </button>)
           }
         </div>
