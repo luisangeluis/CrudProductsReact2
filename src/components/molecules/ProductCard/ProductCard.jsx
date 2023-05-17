@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import {BsFillTrashFill} from "react-icons/bs";
+import { BsFillTrashFill } from "react-icons/bs";
+import { FaPencilAlt } from "react-icons/fa";
 //Slices
 import { deleteProduct } from "@/store/slices/products.slice";
 //Utils
@@ -27,19 +28,28 @@ const ProductCard = ({ product }) => {
   return (
     <>
       <article className={styles.card}>
+        <div className={styles.imageContainer}>
+          <Image src="/img/temporalImage.jpg" className={styles.cardImage} width={1000} height={1000}
+            alt="temporal-image" />
+        </div>
         <div className={styles.cardBody}>
-          <div className={styles.imageContainer}>
-            <Image src="/img/temporalImage.jpg" className={styles.cardImage} width={1000} height={1000}
-              alt="temporal-image" />
+          <div className={styles.cardInfo}>
+
+            <h3 className={styles.cardTitle}>{firstMayusc(product.name)}</h3>
+            <p className={styles.cardText}>{firstMayusc(product.description)}</p>
+            <h4 className={styles.cardSubtitle}>${product.price}</h4>
           </div>
-          <h3 className={styles.cardTitle}>{firstMayusc(product.name)}</h3>
-          <p className={styles.cardText}>{firstMayusc(product.description)}</p>
-          <h4 className={styles.cardSubtitle}>${product.price}</h4>
+          <div className={styles.btnSection}>
+            <button onClick={handleClickDelete} className={styles.cardBtn}>
+              <BsFillTrashFill size={"100%"} title="Delete" />
+            </button>
+            <button onClick={handleClickEdit} className={styles.cardBtn} title="Edit">
+              <FaPencilAlt />Edit
+            </button>
+          </div>
         </div>
-        <div className={styles.cardFooter}>
-          <button onClick={handleClickDelete} className={styles.cardBtn}><BsFillTrashFill size={"100%"}/></button>
-          <button onClick={handleClickEdit} className={styles.cardBtn}>Edit</button>
-        </div>
+        {/* <div className={styles.cardFooter}>
+        </div> */}
       </article>
       <ModalContainer isOpen={isOpenDialog} setIsOpen={setIsOpenDialog}>
         <ConfirmationDialog message="Are you sure you want to delete this item?" setIsOpen={setIsOpenDialog}

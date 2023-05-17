@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { AiOutlineMenu } from 'react-icons/ai'
+import { AiOutlineMenu,AiFillPlusCircle } from 'react-icons/ai'
+// import { FaBeer } from 'react-icons/fa';
 //Styles
 import styles from "./Header.module.scss";
 //Components
@@ -53,7 +54,7 @@ const Header = () => {
         </div>
         <nav className={`${styles.navbar}`} ref={navbar}>
           <ul>
-            <button onClick={handleClickModal}>Add a product</button>
+            <button onClick={handleClickModal}><AiFillPlusCircle />Add a product</button>
           </ul>
         </nav>
       </header>

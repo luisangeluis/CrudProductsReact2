@@ -45,19 +45,37 @@
 .navbar {
   max-height: 0;
   overflow: hidden;
+  // margin: 1rem auto;
+  // transition: max-height ease-in-out 500ms;
+  background-color: var(--color-four);
+  border-radius: .3rem;
+
+  ul{
+    padding: .5rem;
+  }
 
   &.heightAuto {
     max-height: 100vh;
-    transition: max-height ease-in-out 500ms;
+    transition: max-height ease-in-out 750ms;
+    margin: 1rem auto;
 
   }
 
   button {
-    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .7rem .5rem;
     background-color: var(--color-five);
     color: var(--color-white);
     border-radius: 5px;
     font-weight: bold;
+
+    svg{
+      width: 25px;
+      height: 25px;
+      margin-right: .3rem;
+    }
 
   }
 }
@@ -74,7 +92,7 @@
   .navbar {
     width: 70%;
     max-height: 100vh;
-
+    background-color:inherit;
     ul {
       display: flex;
       justify-content: flex-end;

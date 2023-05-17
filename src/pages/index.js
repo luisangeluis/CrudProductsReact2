@@ -23,7 +23,7 @@ export default function Home() {
 
   return (
     <MainLayout>
-      <section className={`${styles.indexContainer} ${inter.className}`}>
+      <section className={`container ${inter.className}`}>
         <h1 className={styles.title}>PRODUCTS</h1>
         <section className={styles.productSection}>
           {
