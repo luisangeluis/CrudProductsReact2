@@ -27,7 +27,7 @@ const FormProduct = ({ product, setIsOpen }) => {
       description: firstMayusc(product?.description) || "",
       brand: firstMayusc(product?.brand) || "",
       price: firstMayusc(product?.price) || "",
-      active: product?.status == "active" ? true : false
+      // active: product?.status == "active" ? true : false
     }
   });
 
@@ -94,9 +94,9 @@ const FormProduct = ({ product, setIsOpen }) => {
         register={{ ...register("productCategoryId", { required: true }) }} />
       {errors.productCategoryId && <p className={styles.error}>This field is required</p>}
 
-      <InputCheckWithLabel id="active" name="active" label="Is Active?"
+      {/* <InputCheckWithLabel id="active" name="active" label="Is Active?"
         register={{ ...register("active") }} />
-      {errors.active && <p className={styles.error}>This field is required</p>}
+      {errors.active && <p className={styles.error}>This field is required</p>} */}
 
       <button type="submit" className={styles.submit}>Send</button>
     </form>
