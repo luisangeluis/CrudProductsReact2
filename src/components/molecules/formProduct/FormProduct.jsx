@@ -12,6 +12,7 @@ import SelectWithLabel from '../selectWithLabel/SelectWithLabel'
 import TextAreaWithLabel from '../textAreaWithLabel/TextAreaWithLabel'
 import InputCheckWithLabel from "../inputCheckWithLabel/InputCheckWithLabel";
 import firstMayusc from "@/utils/firstMayusc";
+import InputImageWithLabel from "../inputImageWithLabel/InputImageWithLabel";
 
 // const options = [
 //   { value: "a", title: "a" },
@@ -97,7 +98,9 @@ const FormProduct = ({ product, setIsOpen }) => {
       {/* <InputCheckWithLabel id="active" name="active" label="Is Active?"
         register={{ ...register("active") }} />
       {errors.active && <p className={styles.error}>This field is required</p>} */}
-
+      <InputImageWithLabel id="image" name="image" label="Upload images"/>
+      <br />
+      <br />
       <button type="submit" className={styles.submit}>Send</button>
     </form>
   )
