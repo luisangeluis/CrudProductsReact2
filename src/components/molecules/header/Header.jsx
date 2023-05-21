@@ -1,19 +1,17 @@
 import { useEffect, useRef, useState } from 'react';
 import { AiOutlineMenu,AiFillPlusCircle } from 'react-icons/ai'
-// import { FaBeer } from 'react-icons/fa';
+import { useRouter } from 'next/router';
 //Styles
 import styles from "./Header.module.scss";
 //Components
 import Link from 'next/link'
 import Image from 'next/image';
-import ModalContainer from '@/components/organisms/modalContainer/ModalContainer';
-import FormProduct from '../formProduct/FormProduct';
 
 const Header = () => {
   const [sizeWindow, setSizeWindow] = useState({});
   const [isOpenNav, setIsOpenNav] = useState(false);
-  const [isOpenModal, setIsOpenModal] = useState(false);
   const navbar = useRef(null);
+  const router = useRouter();
 
   useEffect(() => {
     handleResize();
@@ -33,7 +31,7 @@ const Header = () => {
   }
 
   const handleClickNav = () => navbar.current.classList.toggle(`${styles.heightAuto}`);
-  const handleClickModal = () => setIsOpenModal(!isOpenModal);
+  const handleClick = () => router.push("/post");
 
   return (
     <>
@@ -54,14 +52,11 @@ const Header = () => {
         </div>
         <nav className={`${styles.navbar}`} ref={navbar}>
           <ul>
-            <button onClick={handleClickModal}><AiFillPlusCircle />Add a product</button>
+            <button onClick={handleClick}><AiFillPlusCircle />Add a product</button>
           </ul>
         </nav>
       </header>
-      <ModalContainer isOpen={isOpenModal} setIsOpen={setIsOpenModal}>
-        <FormProduct setIsOpen={setIsOpenModal}/>
-      </ModalContainer>
-    </>
+     </>
   )
 }
 

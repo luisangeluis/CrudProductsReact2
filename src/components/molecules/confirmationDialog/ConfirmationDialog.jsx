@@ -1,14 +1,20 @@
-import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
 //Styles
 import styles from "./ConfirmationDialog.module.scss";
-//Slices
-import { deleteProduct } from "@/store/slices/products.slice";
+//Hooks
+import useDeleteProductById from "@/hooks/useDeleteProductById";
 
 const ConfirmationDialog = ({ message, itemId, setIsOpen }) => {
-  const dispatch = useDispatch();
+  const router = useRouter();
+  const { deleteProduct } = useDeleteProductById();
 
   const handleClick = () => {
-    dispatch(deleteProduct(itemId));
+    deleteProduct(itemId)
+      .then(res => {
+        setIsOpen(false);
+        router.push("/");
+      })
+      .catch(error => console.log(error));
   }
 
   return (

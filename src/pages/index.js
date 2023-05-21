@@ -2,25 +2,18 @@
 
 //Dependencies
 import { Inter } from 'next/font/google'
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-//Slices
-import { getProducts } from '@/store/slices/products.slice'
 //Styles
 import styles from "../styles/index.module.scss";
 //Components
 import MainLayout from '@/components/layout/mainLayout/mainLayout'
 import ProductCard from "@/components/molecules/ProductCard/ProductCard";
+import useGetProducts from '@/hooks/useGetProducts';
+
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  const dispatch = useDispatch();
-  const products = useSelector(state => state.products);
-  console.log(products);
-  useEffect(() => {
-    dispatch(getProducts());
-  }, [])
-
+  const { products } = useGetProducts();
+  
   return (
     <MainLayout>
       <section className={`container ${inter.className}`}>

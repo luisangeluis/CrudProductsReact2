@@ -3,7 +3,6 @@ import styles from "./SelectWithLabel.module.scss";
 import Select from '@/components/atoms/select/Select'
 
 const SelectWithLabel = ({id, name, options, label,register}) => {
-  // console.log(options);
   return (
     <div className={styles.selectWithLabelContainer}>
       <div>
