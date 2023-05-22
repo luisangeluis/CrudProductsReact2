@@ -13,9 +13,14 @@ import SelectWithLabel from '../selectWithLabel/SelectWithLabel'
 import TextAreaWithLabel from '../textAreaWithLabel/TextAreaWithLabel'
 import firstMayusc from "@/utils/firstMayusc";
 import InputImageWithLabel from "../inputImageWithLabel/InputImageWithLabel";
+import { useDispatch, useSelector } from "react-redux";
+import { createProduct, editProduct } from "@/store/slices/products.slice";
 
 const FormProduct = ({ product, setIsOpen }) => {
-  const { response, postProduct } = usePostProduct();
+  const dispatch = useDispatch();
+  const products = useSelector(state => state.products);
+  // const { response, postProduct } = usePostProduct();
+
   const { categories } = useGetProductCategories();
   const { editProductById } = useEditProductById();
   const router = useRouter();
@@ -43,20 +48,13 @@ const FormProduct = ({ product, setIsOpen }) => {
   }, [product])
 
   const onSubmit = data => {
-
     if (product?.id) {
-      editProductById(product.id,data)
-        .then(res=>{
-          router.push("/")
-        })
-        .catch(error=>console.log(error));
+      dispatch(editProduct(product.id, data));
+
     } else {
-      postProduct(`${process.env.API_URL}/api/v1/products`, data)
-        .then(res => {
-          router.push("/");
-        })
-        .catch(error => console.log(error));
+      dispatch(createProduct(data));
     }
+    
   }
 
   return (

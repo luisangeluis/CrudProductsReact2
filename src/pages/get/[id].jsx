@@ -1,9 +1,12 @@
+import MainLayout from '@/components/layout/mainLayout/MainLayout';
 import React from 'react'
 
 const Get = () => {
   return (
     <section>
-      Get
+      <MainLayout>
+        
+      </MainLayout>
     </section>
   )
 }

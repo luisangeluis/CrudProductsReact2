@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { BsFillTrashFill } from "react-icons/bs";
 import { FaPencilAlt } from "react-icons/fa";
 import { useRouter } from "next/router";
+import {AiOutlineEye} from "react-icons/ai";
 //Utils
 import firstMayusc from "@/utils/firstMayusc";
 //Styles
@@ -17,11 +18,10 @@ const ProductCard = ({ product }) => {
   const [isOpenDialog, setIsOpenDialog] = useState(false);
   const router = useRouter();
 
-  const handleClickDelete = () => {
-    setIsOpenDialog(true);
-  }
-
+  const handleClickDelete = () => setIsOpenDialog(true);
   const handleClickEdit = () => router.push(`/edit/${product.id}`);
+  const handleClickShow = () => router.push(`/get/${product.id}`);
+
 
   return (
     <>
@@ -42,6 +42,9 @@ const ProductCard = ({ product }) => {
             </button>
             <button onClick={handleClickEdit} className={styles.cardBtn} title="Edit">
               <FaPencilAlt />Edit
+            </button>
+            <button onClick={handleClickShow} className={styles.cardBtn} title="Show">
+              <AiOutlineEye />Show
             </button>
           </div>
         </div>
