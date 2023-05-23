@@ -14,6 +14,7 @@
   --color-white: #ffffff;
   --color-black: #000000;
   --color-bg-modal: #00000050;
+  --color-transparent:#00000000;
 
   --bg-one: linear-gradient(45deg,#ffffff 0%, #88d8b0 80%);
 }

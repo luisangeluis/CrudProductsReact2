@@ -6,8 +6,10 @@
   margin: 2rem auto;
   height: 50vh;
   text-align: center;
-  // background-color: var(--color-white);
-  background-color: var(--bg-one);
+  // background-color: var(--bg-one);
+  background-color: var(--color-transparent);
+  backdrop-filter: blur(10px);
+
   color: var(--color-white);
   box-shadow: 1px 1px 10px 1px gray;
   border-radius: 10px;
@@ -42,7 +44,7 @@
   }
 
   .cardBody {
-  // background: var(--bg-one);
+    // background: var(--bg-one);
 
     display: flex;
     justify-content: space-between;
@@ -51,20 +53,23 @@
     padding: 1rem .5rem;
     width: 100%;
     flex-grow: 1;
-    // background-color: var(--color-five);
-  background: var(--bg-one);
-
+    // background: var(--bg-one);
+    // background-color: var(--color-transparent);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-  // opacity:.5;
+    // opacity:.5;
 
 
     .btnSection {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 1rem;
+      gap: .5rem;
+
       .cardBtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         color: var(--color-white);
         font-weight: bold;
         border-radius: 8px;
@@ -77,7 +82,7 @@
         position: absolute;
         top: 0;
         right: 0;
-        
+
         background-color: var(--color-three);
       }
 
@@ -102,8 +107,8 @@
       }
 
       svg {
-        width: 100%;
-        height: 100%;
+        width: 1rem;
+        height: 1rem;
         // margin-right: .3rem;
       }
     }

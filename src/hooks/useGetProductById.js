@@ -5,14 +5,14 @@ const useGetProductById = (id) => {
   const [product, setProduct] = useState();
 
   useEffect(() => {
-    if (id) {
-      getProductById(id);
-    }
+    if (id)
+      getProductById();
   }, [id])
 
-  const getProductById = (id) => {
+  const getProductById = () => {
     axios.get(`${process.env.API_URL}/api/v1/products/${id}`)
       .then(res => {
+        console.log(res.data);
         setProduct(res.data);
       })
       .catch(error => console.log(error));
