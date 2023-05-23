@@ -1,6 +1,9 @@
 .mainLayout {
-  background-color:var(--color-white) ;
-
+  background-color: var(--color-two);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  // background-;
   .container {
     display: flex;
     justify-content: center;
