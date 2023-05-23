@@ -7,6 +7,10 @@
   background-color: var(--color-one);
   min-height: initial;
   transition: all ease-in-out 1s;
+  box-shadow: 1px 1px 10px 1px white;
+  // border-radius: 1rem;
+  border-bottom-left-radius: .3rem;
+  border-bottom-right-radius: .3rem;
 }
 
 .logoSection {

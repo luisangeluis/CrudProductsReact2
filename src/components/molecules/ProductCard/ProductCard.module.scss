@@ -6,11 +6,11 @@
   margin: 2rem auto;
   height: 50vh;
   text-align: center;
-  // background-color: var(--color-transparent);
   background-color:#00000001;
-  // background-color: #cb252599;
-  backdrop-filter: blur(1rem);
-
+  background-color:var(--color-white);
+  // border: solid var(--color-one) 1px;
+  // backdrop-filter: blur(1rem);
+  
   color: var(--color-white);
   box-shadow: 1px 1px 10px 1px white;
   border-radius: 10px;
