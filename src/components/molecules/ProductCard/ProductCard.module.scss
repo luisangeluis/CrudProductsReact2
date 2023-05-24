@@ -12,7 +12,7 @@
   // backdrop-filter: blur(1rem);
   
   color: var(--color-white);
-  box-shadow: 1px 1px 10px 1px white;
+  box-shadow: 1px 1px 7px 1px var(--color-white);
   border-radius: 10px;
   position: relative;
 
@@ -101,10 +101,10 @@
         justify-content: center;
         align-items: center;
         gap: .5rem;
-
         padding: .5rem 1rem;
-        background-color: var(--color-black);
-        color: var(--color-white);
+        background-color: var(--color-white);
+        color: var(--color-black);
+        border: solid 1px black;
       }
 
       svg {

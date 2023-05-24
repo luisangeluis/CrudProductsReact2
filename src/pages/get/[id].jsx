@@ -15,7 +15,7 @@ const Get = () => {
   return (
     <section>
       <MainLayout>
-        <ProductBanner />
+        <ProductBanner product={product}/>
       </MainLayout>
     </section>
   )

@@ -3,6 +3,16 @@
   padding: 1rem;
   border-radius: 10px;
   flex-grow: 1;
+
+  button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-white);
+    color: var(--color-three);
+    font-weight: bolder;
+    border:solid 1px var(--color-black)
+  }
 }
 .title{
   color: var(--color-black);

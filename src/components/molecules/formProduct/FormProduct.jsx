@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import {RiSendPlane2Fill} from "react-icons/ri";
 //Hooks
 import usePostProduct from "@/hooks/usePostProduct";
 import useEditProductById from "@/hooks/useEditProductById";
@@ -48,11 +49,12 @@ const FormProduct = ({ product, setIsOpen }) => {
   }, [product])
 
   const onSubmit = data => {
+    console.log(data);
     if (product?.id) {
       dispatch(editProduct(product.id, data));
 
     } else {
-      dispatch(createProduct(data));
+      dispatch(createProduct(data)); 
     }
     
   }
@@ -81,11 +83,11 @@ const FormProduct = ({ product, setIsOpen }) => {
         {errors.productCategoryId && <p className={styles.error}>This field is required</p>}
       </div>
       <div>
-        <InputImageWithLabel id="image" name="image" label="Upload images" />
+        <InputImageWithLabel id="image" name="image" label="UPLOAD IMAGES" register={{...register("image")}}/>
       </div>
       <div>
         <br />
-        <button type="submit" className={styles.submit}>Send</button>
+        <button type="submit" className={styles.submit}>Send <RiSendPlane2Fill /></button>
       </div>
     </form>
   )
