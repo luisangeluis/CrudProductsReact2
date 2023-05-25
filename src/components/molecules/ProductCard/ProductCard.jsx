@@ -14,6 +14,7 @@ import ModalContainer from "@/components/organisms/modalContainer/ModalContainer
 import ConfirmationDialog from "../confirmationDialog/ConfirmationDialog";
 
 const ProductCard = ({ product }) => {
+  // console.log(product);
   const dispatch = useDispatch()
   const [isOpenDialog, setIsOpenDialog] = useState(false);
   const router = useRouter();
@@ -27,8 +28,8 @@ const ProductCard = ({ product }) => {
     <>
       <article className={styles.card}>
         <div className={styles.imageContainer}>
-          <Image src="/img/temporalImage.jpg" className={styles.cardImage} width={1000} height={1000}
-            alt="temporal-image" />
+          <Image src={product.product_images.length ? `${product.product_images[0].imageUrl}`:"/img/temporalImage.jpg"} 
+          className={styles.cardImage} width={1000} height={1000} alt="temporal-image" />
         </div>
         <div className={styles.cardBody}>
           <div className={styles.cardInfo}>

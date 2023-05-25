@@ -35,6 +35,7 @@ export const createProduct = (data) => (dispatch) => {
   axios.post(`${baseUrl}/api/v1/products`, data)
     .then(res => {
       // dispatch(getProducts());
+      console.log("created");
     })
     .catch((error) => console.log(error));
 }
@@ -51,6 +52,8 @@ export const editProduct = (productId, data) => (dispatch) => {
   axios.put(`${baseUrl}/api/v1/products/${productId}`, data)
     .then(res => {
       // dispatch(getProducts());
+      console.log("edited");
+
     })
     .catch(error => console.log(error));
 }

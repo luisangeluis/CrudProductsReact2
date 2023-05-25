@@ -1,8 +1,12 @@
 import styles from "./InputImage.module.scss";
 
-const InputImage = ({ id, name, onChange, register }) => {
+const InputImage = ({ id, name, register, onChange }) => {
   return (
-    <input className={styles.inputImage} id={id} name={name} type='file' onChange={(e)=>onChange(e)} {...register} multiple />
+    <input className={styles.inputImage} id={id} name={name} type='file'
+      {...register}
+      // ref={register}
+      multiple onChange={onChange}
+    />
   )
 }
 

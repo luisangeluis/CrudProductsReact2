@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { current } from '@reduxjs/toolkit';
 import ImagesSection from '@/components/atoms/imagesSection/ImagesSection';
 const ProductBanner = ({ product }) => {
-
+  console.log(product);
   const [currentImage, setCurrentImage] = useState(null);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const ProductBanner = ({ product }) => {
     } else {
       // setCurrentImage()
     }
-  }, [])
+  }, [product])
 
   return (
     <section className={styles.banner}>

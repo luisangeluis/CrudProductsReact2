@@ -3,9 +3,8 @@ import styles from "./inputImageWithLabel.module.scss";
 //Components
 import InputImage from '@/components/atoms/inputImage/InputImage'
 
-const InputImageWithLabel = ({ id, name, register, label }) => {
-  console.log(register);
-  const [files, setFiles] = useState([]);
+const InputImageWithLabel = ({ id, name, register, label,files,setFiles }) => {
+  // const [files, setFiles] = useState([]);
   console.log(files);
   const handleChange = (e) => {
     const currentFiles = [...files];
@@ -14,16 +13,17 @@ const InputImageWithLabel = ({ id, name, register, label }) => {
     currentFiles.push(newFile);
     setFiles(currentFiles);
     // console.log(files);
+    // setValue("image",files)
   }
   return (
     <div className={styles.InputImageWithLabelContainer}>
-      <InputImage id={id} name={name} onChange={handleChange} register={{...register({onChange:handleChange})}} />
+      <InputImage id={id} name={name} register={register} onChange={handleChange} />
       <div className={styles.labelContainer}>
-        <label htmlFor={id}>{label}</label> 
+        <label htmlFor={id}>{label}</label>
       </div>
       <div className={styles.files}>
         {
-          files.map((file,i) => (<p key={i}>{file.name}- </p>))
+          files.map((file, i) => (<p key={i}>{file.name}- </p>))
         }
       </div>
     </div>

@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import {RiSendPlane2Fill} from "react-icons/ri";
+import { RiSendPlane2Fill } from "react-icons/ri";
 //Hooks
 import usePostProduct from "@/hooks/usePostProduct";
 import useEditProductById from "@/hooks/useEditProductById";
@@ -19,13 +19,14 @@ import { createProduct, editProduct } from "@/store/slices/products.slice";
 
 const FormProduct = ({ product, setIsOpen }) => {
   const dispatch = useDispatch();
+  const router = useRouter();
   const products = useSelector(state => state.products);
-  // const { response, postProduct } = usePostProduct();
+  const [files, setFiles] = useState([]);
 
+  // const { response, postProduct } = usePostProduct();
   const { categories } = useGetProductCategories();
   const { editProductById } = useEditProductById();
-  const router = useRouter();
-  const { register, handleSubmit, watch, formState: { errors }, control, setValue } = useForm({
+  const { register, handleSubmit, watch, formState: { errors }, control, setValue, getValues } = useForm({
     defaultValues: {
       name: firstMayusc(product?.name) || "",
       description: firstMayusc(product?.description) || "",
@@ -48,19 +49,52 @@ const FormProduct = ({ product, setIsOpen }) => {
     }
   }, [product])
 
+  // useEffect(() => {
+  //   if(files){
+  //     setValue("image",files)
+  //   }
+  // }, [files])
+  
+
   const onSubmit = data => {
+    const formData = new FormData();
+    data.image=files;
+    for (let clave in data) {
+      if (clave != "image") {
+        console.log(clave, data[clave]);
+        formData.append(clave, data[clave]);
+      } else {
+        console.log(data[clave]);
+        for (let i = 0; i < data[clave].length; i++) {
+          formData.append("image", data[clave][i])
+        }
+      }
+
+
+    }
+    console.log(formData);
+
     console.log(data);
+
     if (product?.id) {
-      dispatch(editProduct(product.id, data));
+      dispatch(editProduct(product.id, formData));
 
     } else {
-      dispatch(createProduct(data)); 
+      dispatch(createProduct(formData));
     }
-    
   }
 
+  // const handleChange = (e) => {
+  //   const currentFiles = [...files];
+  //   const newFile = e.target.files[0];
+  //   console.log(newFile);
+  //   currentFiles.push(newFile);
+  //   setFiles(currentFiles);
+  //   // console.log(files);
+  // }
+
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <form className={styles.form} onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
       <div>
         <InputWithLabel id="name" name="name" type="text" label="Product name"
           register={{ ...register("name", { required: true }) }} />
@@ -83,7 +117,10 @@ const FormProduct = ({ product, setIsOpen }) => {
         {errors.productCategoryId && <p className={styles.error}>This field is required</p>}
       </div>
       <div>
-        <InputImageWithLabel id="image" name="image" label="UPLOAD IMAGES" register={{...register("image")}}/>
+        <InputImageWithLabel id="image" name="image" label="UPLOAD IMAGES"
+          register={{ ...register("image", { required: true }) }}
+          files={files} setFiles={setFiles} />
+        {/* {errors.image && <p className={styles.error}>This field is required</p>} */}
       </div>
       <div>
         <br />
