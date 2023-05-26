@@ -1,17 +1,26 @@
 import Image from "next/image";
 import styles from "./ImagesSection.module.scss";
+import { useRef } from "react";
 
-const ImagesSection = ({ imagesList }) => {
+const ImagesSection = ({ imagesList, onClick,selectedIndex }) => {
   // console.log(imagesList);
-  console.log();
+  const ref = useRef();
+
+  const handleClick=(e)=>{
+    
+  }
+
+  console.log(imagesList);
   return (
-    <div>
-      { 
-      imagesList?.length ?
-        (imagesList.map(image=>(
-          <Image src={image.imageUrl} width={1000} height={1000} alt={"image"}/>
-        )))
-        :"No image"
+    <div className={styles.imagesSectionContainer}>
+      {
+        imagesList?.length ?
+          (imagesList.map((image, i) => (
+            <Image className={`${styles.image} ${i==selectedIndex && styles.selected}`} 
+            src={image.imageUrl} width={1000} height={1000} alt={"image"}
+              onClick={(e) => onClick(e, i)} key={i} />
+          )))
+          : "No image"
       }
     </div>
   )

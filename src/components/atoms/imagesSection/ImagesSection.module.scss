@@ -1,0 +1,30 @@
+.imagesSectionContainer{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  overflow: auto;
+  padding: 1rem;
+
+  .image{
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 5px;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    border: solid 1px var(--color-one);
+
+  }
+  
+  .selected{
+    box-shadow: 1px 1px 7px 2px var(--color-one);
+    border: solid 1.5px var(--color-one);
+    transition: box-shadow ease-in-out 100ms;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .imagesSectionContainer{
+    flex-direction: column;
+  }
+}

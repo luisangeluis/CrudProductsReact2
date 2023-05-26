@@ -6,8 +6,10 @@ const Post = () => {
   return (
     <section className={styles.createContainer}>
       <MainLayout>
-        <h1 className={styles.title}>Create</h1>
-        <FormProduct/>  
+        <div className="container">
+          <h1 className={styles.title}>Create</h1>
+          <FormProduct />
+        </div>
       </MainLayout>
     </section>
   )

@@ -1,37 +1,48 @@
 import { useEffect, useState } from 'react'
+//Utils
+import firstMayusc from '@/utils/firstMayusc';
 //Styles
 import styles from "./ProductBanner.module.scss";
+//Components
 import Image from 'next/image';
-import { current } from '@reduxjs/toolkit';
 import ImagesSection from '@/components/atoms/imagesSection/ImagesSection';
+
 const ProductBanner = ({ product }) => {
   console.log(product);
   const [currentImage, setCurrentImage] = useState(null);
-
+  console.log(currentImage);
   useEffect(() => {
     if (product?.product_images.length > 0) {
-      setCurrentImage(product.product_images[0]);
-
-    } else {
-      // setCurrentImage()
+      setCurrentImage(
+        { product: product.product_images[0], position: 0 }
+      );
     }
   }, [product])
+
+  const handleClick = (e, i) => {
+    console.log(e, i);
+    setCurrentImage({ product: product.product_images[i], position: i })
+  }
 
   return (
     <section className={styles.banner}>
       <article className={styles.bannerImages}>
-        <ImagesSection imagesList={product?.product_images} />
+        <ImagesSection imagesList={product?.product_images} onClick={handleClick} selectedIndex={currentImage?.position} />
       </article>
-      <article className={styles.bannerMainImage}>
+      {/* <article className={styles.bannerMainImage}> */}
         <div className={styles.imageContainer}>
-          <Image className={styles.bannerImage} src={currentImage ? currentImage?.imageUrl : "/img/temporalImage.jpg"}
+          <Image className={styles.bannerImage} 
+            src={currentImage ? currentImage.product.imageUrl : "/img/temporalImage.jpg"}
             width={500} height={1000} alt={"banner-image"} />
         </div>
-      </article>
+      {/* </article> */}
       <article className={styles.bannerInfo}>
-        <h1>{product?.name}</h1>
-        <p>{product?.description}</p>
-        <h2>${product?.price}</h2>
+        <div className={styles.info}>
+          <h1 className={styles.title}>{product?.name.toUpperCase()}</h1>
+          <p className={styles.text}>{firstMayusc(product?.description)}</p>
+          <h2 className={styles.subtitle}>${product?.price}</h2>
+        </div>
+
       </article>
     </section>
   )

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { AiOutlineMenu,AiFillPlusCircle } from 'react-icons/ai'
+import { AiOutlineMenu, AiFillPlusCircle } from 'react-icons/ai'
 import { useRouter } from 'next/router';
 //Styles
 import styles from "./Header.module.scss";
@@ -37,16 +37,14 @@ const Header = () => {
     <>
       <header className={styles.header}>
         <div className={styles.logoSection}>
-          <Link href="/">
-            <Image src="/img/temporalImage.jpg" width={800} height={800} alt="temporal-image"
-              className={styles.logo}
-            />
-          </Link>
+          <div className={styles.mainLink}>
+            <Link href="/">CRUD</Link>
+          </div>
           {sizeWindow.width < 768 && (
             <button onClick={handleClickNav}
               className={styles.toogleButton}
             >
-              <AiOutlineMenu size={"100%"}/> 
+              <AiOutlineMenu size={"100%"} />
             </button>)
           }
         </div>
@@ -56,7 +54,7 @@ const Header = () => {
           </ul>
         </nav>
       </header>
-     </>
+    </>
   )
 }
 

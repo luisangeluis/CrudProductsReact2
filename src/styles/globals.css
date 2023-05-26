@@ -27,13 +27,13 @@ body {
 
 .container {
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 1rem 1rem;
 }
 
 button:hover {
   opacity: .9;
-  transform: scale(1.02);
-  transition: all ease-in-out 500ms;
+  transform: scale(1.01);
+  transition: all ease-in-out 200ms;
 }
 
 @media screen and (min-width:768px) {

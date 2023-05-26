@@ -124,6 +124,7 @@ const FormProduct = ({ product, setIsOpen }) => {
       </div>
       <div>
         <br />
+        <br />
         <button type="submit" className={styles.submit}>Send <RiSendPlane2Fill /></button>
       </div>
     </form>

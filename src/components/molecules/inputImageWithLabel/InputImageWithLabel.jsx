@@ -7,6 +7,7 @@ const InputImageWithLabel = ({ id, name, register, label,files,setFiles }) => {
   // const [files, setFiles] = useState([]);
   console.log(files);
   const handleChange = (e) => {
+    console.log(e);
     const currentFiles = [...files];
     const newFile = e.target.files[0];
     console.log(newFile);
@@ -23,7 +24,7 @@ const InputImageWithLabel = ({ id, name, register, label,files,setFiles }) => {
       </div>
       <div className={styles.files}>
         {
-          files.map((file, i) => (<p key={i}>{file.name}- </p>))
+          files.map((file, i) => (<p key={i} className={styles.file}>{file.name}</p>))
         }
       </div>
     </div>

@@ -1,25 +1,27 @@
 .card {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   flex-direction: column;
   margin: 2rem auto;
   height: 50vh;
-  text-align: center;
-  background-color:#00000001;
-  background-color:var(--color-white);
-  // border: solid var(--color-one) 1px;
-  // backdrop-filter: blur(1rem);
-  
+  background-color: var(--color-white);
   color: var(--color-white);
-  box-shadow: 1px 1px 7px 1px var(--color-white);
+  text-align: center;
+  box-shadow: 1px 1px 7px 2px var(--color-one);
   border-radius: 10px;
   position: relative;
+
+  &:hover{
+    box-shadow: 1px 1px 10px 3px var(--color-one);
+    
+
+  }
 
   .imageContainer {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: .5rem;
     height: 50%;
   }
 
@@ -35,35 +37,33 @@
   }
 
   .cardText {
-    color: var(--color-white);
+    color: var(--color-one);
     font-weight: bold;
+    margin: .5rem auto;
   }
 
   .cardSubtitle {
     color: var(--color-three);
     font-weight: bolder;
+    // text-align: left;
+    opacity: .9;
+    font-size: 1.2rem;
   }
 
   .cardBody {
-    // background: var(--bg-one);
-
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
     flex-direction: column;
     padding: 1rem .5rem;
     width: 100%;
     flex-grow: 1;
-    // background: var(--bg-one);
-    // background-color: var(--color-transparent);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    // opacity:.5;
-
 
     .btnSection {
       display: flex;
-      justify-content: center;
+      justify-content: space-around;
       align-items: center;
       gap: .5rem;
 
@@ -74,16 +74,15 @@
         color: var(--color-white);
         font-weight: bold;
         border-radius: 8px;
+        padding: .5rem;
       }
 
       .cardBtn:nth-child(1) {
         width: 3rem;
         height: 3rem;
-        padding: .5rem;
         position: absolute;
-        top: 0;
-        right: 0;
-
+        top: .2rem;
+        right: .2rem;
         background-color: var(--color-three);
       }
 
@@ -92,8 +91,9 @@
         justify-content: center;
         align-items: center;
         gap: .5rem;
-        padding: .5rem 1rem;
         background-color: var(--color-four);
+        flex-grow: .5;
+
       }
 
       .cardBtn:nth-child(3) {
@@ -101,16 +101,16 @@
         justify-content: center;
         align-items: center;
         gap: .5rem;
-        padding: .5rem 1rem;
         background-color: var(--color-white);
         color: var(--color-black);
         border: solid 1px black;
+        flex-grow: .5;
+
       }
 
       svg {
         width: 1rem;
         height: 1rem;
-        // margin-right: .3rem;
       }
     }
   }
@@ -118,15 +118,8 @@
 
 }
 
-@media screen and (min-width:576px) {
-  .card {
-    .cardBody {}
-  }
-}
-
 @media screen and (min-width:768px) {
   .card {
-    // height: 50vh;
     height: 40vh;
 
     .imageContainer {
@@ -136,9 +129,22 @@
 
     .cardBody {
       .btnSection {
+        justify-content: center;
         .cardBtn:nth-child(1) {
           width: 2.7rem;
           height: 2.7rem;
+        }
+
+        .cardBtn:nth-child(2) {
+          width: 2.7rem;
+          height: 2.7rem;
+          flex-grow: .3;
+        }
+
+        .cardBtn:nth-child(3) {
+          width: 2.7rem;
+          height: 2.7rem;
+          flex-grow: .3;
 
         }
       }

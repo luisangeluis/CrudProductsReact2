@@ -1,25 +1,67 @@
-.banner{
-  
-  .imageContainer{
-    margin: 3rem auto;
-    height: 50vh;
-    .bannerImage{
-      max-width:100%;
+.title {
+  font-size: 3rem;
+  font-weight: bolder;
+  color: var(--color-two);
+  word-break: break-all;
+}
+
+.subtitle {
+  font-size: 2rem;
+  font-weight: bolder;
+  color: var(--color-three);
+}
+
+.text {
+  font-size: 1.5rem;
+  font-weight: bolder;
+  color: var(--color-black);
+}
+
+.banner {
+  .bannerImages {
+    padding: 1rem;
+  }
+
+  .imageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem .5rem;
+    .bannerImage {
+      margin: 3rem auto;
+      max-width: 100%;
       max-height: 100%;
     }
   }
 
-  .bannerInfo{
+  .bannerInfo {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap:.5rem;
+    .info {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+      width: 90%;
+      height: 90%;
+      padding: 1rem;
+      border-radius: 5px;
+      background-color: var(--color-white);
+      border: solid 1px var(--color-one);
+      text-align: center;
+      box-shadow: 1px 1px 7px 2px var(--color-one);
+    }
   }
 }
 
 @media screen and (min-width:768px) {
-  .banner{
-    display:grid;
-    grid-template-columns: 1fr repeat(2,2fr);
+  .banner {
+    display: grid;
+    grid-template-columns: 1fr repeat(2, 2fr);
+    height: 60vh;
+
   }
 }

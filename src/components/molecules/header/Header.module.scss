@@ -7,7 +7,7 @@
   background-color: var(--color-one);
   min-height: initial;
   transition: all ease-in-out 1s;
-  box-shadow: 1px 1px 7px 1px white;
+  box-shadow: 1px 1px 7px 1px var(--color-one);
   // border-radius: 1rem;
   border-bottom-left-radius: .3rem;
   border-bottom-right-radius: .3rem;
@@ -20,16 +20,21 @@
   height: 4rem;
 
   a {
-    width: 10rem;
-    height: inherit;
-    display: block;
+    // width: 10rem;
+    // height: inherit;
+    // display: block;
   }
-
-  .logo {
-    max-height: 100%;
-    max-width: 100%;
-   
+  .mainLink{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: bolder;
   }
+  // .logo {
+  //   max-height: 100%;
+  //   max-width: 100%;
+  // }
 }
 
 .toogleButton {
@@ -84,7 +89,7 @@
 @media screen and (min-width:768px) {
   .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
   }
 

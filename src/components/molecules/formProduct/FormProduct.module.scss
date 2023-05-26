@@ -1,35 +1,34 @@
-.form{
+.form {
   width: 100%;
   padding: 1rem;
   border-radius: 10px;
   flex-grow: 1;
 
-  button{
+  .submit {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: .5rem 1rem;
+
     background-color: var(--color-white);
-    color: var(--color-three);
+    color: var(--color-black);
     font-weight: bolder;
-    border:solid 1px var(--color-black)
+    border: solid 1px var(--color-black);
+    border-radius: 7px;
+
+    &:hover {
+      opacity: .7;
+    }
   }
 }
-.title{
+
+.title {
   color: var(--color-black);
   font-size: 1.5rem;
   font-weight: bold;
 }
-.submit{
-  padding: .5rem 1rem;
-  border: solid 1px silver;
-  border-radius: 7px;
 
-  &:hover{
-    opacity: .7;
-  }
-}
-
-.error{
+.error {
   margin: .3rem 0;
   padding: .5rem;
   background-color: var(--color-three);
@@ -38,8 +37,8 @@
 }
 
 @media screen and (min-width:768px) {
-  .form{
+  .form {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
