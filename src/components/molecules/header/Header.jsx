@@ -10,8 +10,25 @@ import Image from 'next/image';
 const Header = () => {
   const [sizeWindow, setSizeWindow] = useState({});
   const [isOpenNav, setIsOpenNav] = useState(false);
+  const headerRef = useRef(null);
   const navbar = useRef(null);
   const router = useRouter();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      headerRef.current?.classList.add(`${styles.headerEfect}`);
+
+      setTimeout(() => {
+        headerRef.current?.classList.remove(`${styles.headerEfect}`);
+      }, 2000);
+    }
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    }
+  }, [])
+
 
   useEffect(() => {
     handleResize();
@@ -35,7 +52,7 @@ const Header = () => {
 
   return (
     <>
-      <header className={styles.header}>
+      <header className={styles.header} ref={headerRef}>
         <div className={styles.logoSection}>
           <div className={styles.mainLink}>
             <Link href="/">CRUD</Link>

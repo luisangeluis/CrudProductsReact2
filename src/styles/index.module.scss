@@ -8,8 +8,8 @@
 @media screen and (min-width:768px){
   .productSection{
     display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1rem;
     // flex-shrink: 1;
   }
 }

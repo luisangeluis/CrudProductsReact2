@@ -15,11 +15,11 @@ const Edit = () => {
   return (
     <section>
       <MainLayout>
-        <div className="container">
+        {/* <div className="container"> */}
 
-        <h1 className={styles.title}>Edit</h1>
-        <FormProduct product={product} />
-        </div>
+          <h1 className={styles.title}>Edit</h1>
+          <FormProduct product={product} />
+        {/* </div> */}
       </MainLayout>
     </section>
   )

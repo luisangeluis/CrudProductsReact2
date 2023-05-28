@@ -8,9 +8,17 @@
   min-height: initial;
   transition: all ease-in-out 1s;
   box-shadow: 1px 1px 7px 1px var(--color-one);
-  // border-radius: 1rem;
   border-bottom-left-radius: .3rem;
   border-bottom-right-radius: .3rem;
+
+  &.headerEfect {
+    background-color: transparent;
+    box-shadow: 1px 1px 7px 1px var(--color-black);
+    // backdrop-filter: blur(1.0px);
+    transition: background-color ease 500ms;
+    backdrop-filter: blur(1px);
+
+  }
 }
 
 .logoSection {
@@ -24,13 +32,15 @@
     // height: inherit;
     // display: block;
   }
-  .mainLink{
+
+  .mainLink {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.8rem;
     font-weight: bolder;
   }
+
   // .logo {
   //   max-height: 100%;
   //   max-width: 100%;
@@ -54,7 +64,7 @@
   // background-color: var(--color-four);
   border-radius: .3rem;
 
-  ul{
+  ul {
     padding: .5rem;
   }
 
@@ -75,7 +85,7 @@
     border-radius: 5px;
     font-weight: bold;
 
-    svg{
+    svg {
       width: 25px;
       height: 25px;
       margin-right: .3rem;
@@ -96,7 +106,8 @@
   .navbar {
     width: 70%;
     max-height: 100vh;
-    background-color:inherit;
+    // background-color: inherit;
+
     ul {
       display: flex;
       justify-content: flex-end;

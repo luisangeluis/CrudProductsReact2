@@ -10,9 +10,9 @@
   --color-five: #4a2512;
   --color-gray: #e5e5e5;
   --color-white: #ffffff;
-  --color-black: #050505;
+  --color-black: #000000;
   --color-bg-modal: #00000050;
-  --color-transparent: #22211e
+  --color-transparent: #22211e;
 }
 
 * {
@@ -28,6 +28,8 @@ body {
 .container {
   margin: 0 auto;
   padding: 1rem 1rem;
+  min-height: 100vh;
+
 }
 
 button:hover {

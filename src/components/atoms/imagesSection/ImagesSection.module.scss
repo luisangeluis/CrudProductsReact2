@@ -12,13 +12,13 @@
     width: 100px;
     height: 100px;
     cursor: pointer;
-    border: solid 1px var(--color-one);
+    // border: solid 1px var(--color-one);
 
   }
   
   .selected{
     box-shadow: 1px 1px 7px 2px var(--color-one);
-    border: solid 1.5px var(--color-one);
+    // border: solid 1.5px var(--color-one);
     transition: box-shadow ease-in-out 100ms;
   }
 }
