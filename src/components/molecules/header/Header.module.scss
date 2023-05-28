@@ -11,6 +11,10 @@
   border-bottom-left-radius: .3rem;
   border-bottom-right-radius: .3rem;
 
+  .dark .header{
+    background-color: red;
+  }
+
   &.headerEfect {
     background-color: transparent;
     box-shadow: 1px 1px 7px 1px var(--color-black);

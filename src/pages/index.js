@@ -3,7 +3,7 @@
 //Dependencies
 import { Inter } from 'next/font/google'
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 //Slices
 import { getProducts } from '@/store/slices/products.slice';
 //Styles
@@ -11,27 +11,24 @@ import styles from "../styles/index.module.scss";
 //Components
 import MainLayout from '@/components/layout/mainLayout/mainLayout'
 import ProductCard from "@/components/molecules/ProductCard/ProductCard";
-import InputCheckWithLabel from '@/components/molecules/inputCheckWithLabel/InputCheckWithLabel';
+import SwitchTheme from '@/components/atoms/switchTheme/SwitchTheme';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const dispatch = useDispatch();
   const products = useSelector(state => state.products);
-  const [isDark, setIsDark] = useState(false)
 
   useEffect(() => {
     console.log("naciendo");
     dispatch(getProducts());
   }, [])
 
-  const handleChecked = (isDark) => isDark ? setIsDark(true) : setIsDark(false);
-
   return (
     <MainLayout>
       <section className={styles.titleSwitch} >
         <h1 className={styles.title}>PRODUCTS</h1>
-        <InputCheckWithLabel id={"switch"} onChange={handleChecked} />
+        <SwitchTheme />
       </section>
       <section className={styles.productSection}>
         {
