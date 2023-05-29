@@ -1,25 +1,28 @@
-.confirmationDialogContainer{
+.confirmationDialogContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   flex-grow: 1;
 }
-.btnSecction{
+
+.btnSecction {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
   padding: 1rem;
 
-  .btn:nth-child(1){
+  .btn:nth-child(1) {
     background-color: var(--color-three);
   }
-  .btn:nth-child(2){
+
+  .btn:nth-child(2) {
     background-color: var(--color-two);
   }
 }
-.btn{
+
+.btn {
   padding: .5rem 1rem;
   border-radius: 8px;
   color: var(--color-white);

@@ -8,7 +8,6 @@ export const productsSlice = createSlice({
   name: "products",
   initialState: {
     products: [],
-    message: "",
     isError: false
   },
   reducers: {
@@ -25,9 +24,13 @@ export const getProducts = () => (dispatch) => {
     .then(res => {
       const products = res.data.response;
       console.log(res);
-      dispatch(setProducts({ products: products, message: "", isError: false }))
+      dispatch(setProducts({ products: products, isError: false }))
     })
-    .catch(error => console.log(error));
+    .catch(error => {
+      console.log(error)
+      dispatch(setProducts({ isError: true }))
+      
+    });
 }
 
 

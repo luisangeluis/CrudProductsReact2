@@ -1,5 +1,5 @@
 .btnThemeContainer{
-
+  padding: .5rem;
   button{
     display: flex;
     justify-content: center;
@@ -8,22 +8,28 @@
     width: 6rem;
     height: 2.7rem;
     background-color: var(--color-gray);
-    background-color: blue;
-    border-radius: 1rem;
+    // background-color: blue;
+    border-radius: .5rem;
     position: relative;
 
     .switch{
-      width: 2.7rem;
-      height: 2.7rem;
-      background-color: red;
+      width: 50%;
+      height:100%;
+      background-color: var(--color-two);
       position: absolute;
-      top: 0;
-      left:0;
-      border-radius: 50%;
+      top: 0px;
+      left:0px;
+      right: 0;
+      bottom: 0;
+      border-radius: 10px;
+      padding: .5rem;
+      border: solid 5px var(--color-gray);
+      transition: all ease-in-out 300ms;
 
       &.dark{
         left: unset;
         right:0;
+
       }
     }
     svg{
@@ -31,5 +37,14 @@
       width: 40px;
       height: 25px;
     }
+  }
+}
+
+@media screen and (min-width:768px) {
+  .btnThemeContainer{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  
   }
 }

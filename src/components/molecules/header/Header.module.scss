@@ -20,7 +20,7 @@
     box-shadow: 1px 1px 7px 1px var(--color-black);
     // backdrop-filter: blur(1.0px);
     transition: background-color ease 500ms;
-    backdrop-filter: blur(1px);
+    backdrop-filter: blur(.1px);
 
   }
 }
@@ -53,8 +53,8 @@
 
 .toogleButton {
   padding: .1rem;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 5px;
   background-color: var(--color-two);
   color: var(--color-white);

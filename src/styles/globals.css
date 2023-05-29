@@ -25,6 +25,19 @@ body {
   min-height: 100vh;
 }
 
+.dark{
+  --color-one:#184064;
+  --color-two: #2b3f34;
+  --color-three: #4f1a1e;
+  --color-four: #48422f;
+  --color-five: #2b150a;
+  /* --color-black: #ffffff;
+  --color-white: #000000; */
+
+  /* background-color: #000000;
+  color: white; */
+}
+
 .container {
   margin: 0 auto;
   padding: 1rem 1rem;

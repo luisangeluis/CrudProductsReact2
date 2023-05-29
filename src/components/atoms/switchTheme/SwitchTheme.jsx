@@ -1,34 +1,24 @@
 "use client"
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { BsFillSunFill, BsMoonFill } from 'react-icons/bs';
+import { useDispatch, useSelector } from "react-redux";
+import { setTheme } from '@/store/slices/theme.slice';
+
+//Utils
+import getTheme from "@/utils/getTheme";
 //Styles
 import styles from "./SwitchTheme.module.scss";
-// import { get } from "react-hook-form";
 
 const SwitchTheme = () => {
+  const theme = useSelector(state => state.theme);
+  const dispatch = useDispatch();
   const switchRef = useRef(null);
-  // let theme = "";
-  const [switchValue, setSwitchValue] = useState();
-
-
-  useEffect(() => {
-    getTheme();
-  }, [])
-
-  const getTheme = () => {
-    if (typeof window !== 'undefined') {
-      setSwitchValue(localStorage.getItem('theme'));
-    }
-  }
 
   const handleClick = () => {
-    if (switchValue === "dark") {
-      localStorage.setItem("theme", "")
-      setSwitchValue("")
-    } else {
-      localStorage.setItem("theme", "dark")
-      setSwitchValue("dark")
-    }
+    let value = ""
+    theme === "dark" ? value = "" : value = "dark";
+    localStorage.setItem("theme", `${value}`)
+    dispatch(setTheme(getTheme()));
   }
 
   return (
@@ -36,7 +26,7 @@ const SwitchTheme = () => {
       <button onClick={handleClick} >
         <span><BsFillSunFill /></span>
         <span><BsMoonFill /></span>
-        <div className={`${styles.switch} ${switchValue === "dark" && styles.dark} `} ref={switchRef}></div>
+        <div className={`${styles.switch} ${theme === "dark" && styles.dark} `} ref={switchRef}></div>
       </button>
     </div>
   )
