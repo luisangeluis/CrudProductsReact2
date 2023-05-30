@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import { RiSendPlane2Fill } from "react-icons/ri";
+import { useRouter } from "next/router";
 //Hooks
 import usePostProduct from "@/hooks/usePostProduct";
 import useEditProductById from "@/hooks/useEditProductById";
@@ -14,17 +14,13 @@ import SelectWithLabel from '../selectWithLabel/SelectWithLabel'
 import TextAreaWithLabel from '../textAreaWithLabel/TextAreaWithLabel'
 import firstMayusc from "@/utils/firstMayusc";
 import InputImageWithLabel from "../inputImageWithLabel/InputImageWithLabel";
-import { useDispatch, useSelector } from "react-redux";
-import { createProduct, editProduct } from "@/store/slices/products.slice";
 
-const FormProduct = ({ product, setIsOpen }) => {
-  const dispatch = useDispatch();
+const FormProduct = ({ product }) => {
+  const baseUrl = process.env.API_URL;
   const router = useRouter();
-  const products = useSelector(state => state.products);
   const [files, setFiles] = useState([]);
-
-  // const { response, postProduct } = usePostProduct();
   const { categories } = useGetProductCategories();
+  const { response, postProduct } = usePostProduct();
   const { editProductById } = useEditProductById();
   const { register, handleSubmit, watch, formState: { errors }, control, setValue, getValues } = useForm({
     defaultValues: {
@@ -34,7 +30,7 @@ const FormProduct = ({ product, setIsOpen }) => {
       price: firstMayusc(product?.price) || "",
     }
   });
-
+  
   useEffect(() => {
     if (product)
       setValue("productCategoryId", product?.productCategoryId);
@@ -49,16 +45,11 @@ const FormProduct = ({ product, setIsOpen }) => {
     }
   }, [product])
 
-  // useEffect(() => {
-  //   if(files){
-  //     setValue("image",files)
-  //   }
-  // }, [files])
-  
-
   const onSubmit = data => {
     const formData = new FormData();
-    data.image=files;
+
+    data.image = files;
+
     for (let clave in data) {
       if (clave != "image") {
         console.log(clave, data[clave]);
@@ -69,30 +60,23 @@ const FormProduct = ({ product, setIsOpen }) => {
           formData.append("image", data[clave][i])
         }
       }
-
-
     }
-    console.log(formData);
-
-    console.log(data);
 
     if (product?.id) {
-      dispatch(editProduct(product.id, formData));
+      editProductById(product.id,formData)
+      .then(res=>{
+        console.log(res);
+        router.push("/")
 
+      });
     } else {
-      dispatch(createProduct(formData));
+      postProduct(`${baseUrl}/api/v1/products`, formData)
+        .then(res => {
+          console.log(res);
+          router.push("/")
+        })
     }
   }
-
-  // const handleChange = (e) => {
-  //   const currentFiles = [...files];
-  //   const newFile = e.target.files[0];
-  //   console.log(newFile);
-  //   currentFiles.push(newFile);
-  //   setFiles(currentFiles);
-  //   // console.log(files);
-  // }
-
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
       <div>
@@ -120,7 +104,6 @@ const FormProduct = ({ product, setIsOpen }) => {
         <InputImageWithLabel id="image" name="image" label="UPLOAD IMAGES"
           register={{ ...register("image", { required: true }) }}
           files={files} setFiles={setFiles} />
-        {/* {errors.image && <p className={styles.error}>This field is required</p>} */}
       </div>
       <div>
         <br />

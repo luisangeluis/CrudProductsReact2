@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 //Slices
-import { deleteProduct, getProducts } from "@/store/slices/products.slice";
+import { deleteProduct } from "@/store/slices/products.slice";
 //Styles
 import styles from "./ConfirmationDialog.module.scss";
 import { useRouter } from "next/router";
@@ -10,9 +10,7 @@ const ConfirmationDialog = ({ message, itemId, setIsOpen }) => {
   const products = useSelector(state => state.products);
   const router = useRouter();
 
-  const handleClick = () => {
-    dispatch(deleteProduct(itemId));
-  }
+  const handleClick = () => dispatch(deleteProduct(itemId));
 
   return (
     <div className={styles.confirmationDialogContainer}>

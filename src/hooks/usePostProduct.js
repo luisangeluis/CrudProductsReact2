@@ -2,7 +2,10 @@ import axios from 'axios';
 import { useState } from 'react'
 
 const usePostProduct = () => {
-  const [response, setResponse] = useState();
+  const [response, setResponse] = useState({
+    res: "",
+    error: ""
+  });
 
   const postProduct = async (url, data) => {
     try {
