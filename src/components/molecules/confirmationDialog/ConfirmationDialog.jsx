@@ -10,7 +10,10 @@ const ConfirmationDialog = ({ message, itemId, setIsOpen }) => {
   const products = useSelector(state => state.products);
   const router = useRouter();
 
-  const handleClick = () => dispatch(deleteProduct(itemId));
+  const handleClick = () => {
+    dispatch(deleteProduct(itemId));
+    // setIsOpen(false);
+  }
 
   return (
     <div className={styles.confirmationDialogContainer}>

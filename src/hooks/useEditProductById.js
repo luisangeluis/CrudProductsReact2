@@ -4,8 +4,9 @@ import { useState } from 'react'
 
 const useEditProductById = () => {
   const [response, setResponse] = useState({
-    res: "",
-    error: ""
+    product:{},
+    isError:false,
+    message:""
   });
   const router = useRouter();
 

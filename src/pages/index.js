@@ -1,27 +1,24 @@
 'use client';
 
 //Dependencies
-import { Inter } from 'next/font/google'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-//Slices
-import { getProducts } from '@/store/slices/products.slice';
-import { setLoader } from '@/store/slices/loader.slice';
 //Styles
 import styles from "../styles/index.module.scss";
 //Components
 import MainLayout from '@/components/layout/mainLayout/mainLayout'
 import ProductCard from "@/components/molecules/ProductCard/ProductCard";
 import SwitchTheme from '@/components/atoms/switchTheme/SwitchTheme';
-import ModalContainer from '@/components/organisms/modalContainer/ModalContainer';
 import Loader from '@/components/organisms/loader/Loader';
-
-const inter = Inter({ subsets: ['latin'] })
+import useGetProducts from '@/hooks/useGetProducts';
+import { setLoader } from '@/store/slices/loader.slice';
+import { getProducts } from '@/store/slices/products.slice';
 
 export default function Home() {
+  // const { products, getProducts } = useGetProducts();
   const dispatch = useDispatch();
-  const products = useSelector(state => state.products);
   const loader = useSelector(state => state.loader);
+  const products = useSelector(state => state.products);
 
   useEffect(() => {
     console.log("naciendo");
@@ -29,10 +26,11 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    dispatch(setLoader(true))
-    if (products.products.length || products.error) dispatch(setLoader(false))
-  }, [products])
-
+    dispatch(setLoader(true));
+    if(products.products.length || products.error)dispatch(setLoader((false)));
+    
+  }, [products.products])
+  
 
   return (
     <MainLayout>
@@ -42,12 +40,9 @@ export default function Home() {
         <SwitchTheme />
       </section>
       <section className={styles.productSection}>
-
-        {
-          products.products?.map((product) => (
-            <ProductCard product={product} key={product.id} />
-          ))
-        }
+        {products.products?.map((product) => (
+          <ProductCard product={product} key={product.id} />
+        ))}
       </section>
     </MainLayout>
   )

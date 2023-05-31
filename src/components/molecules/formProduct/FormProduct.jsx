@@ -20,7 +20,7 @@ const FormProduct = ({ product }) => {
   const router = useRouter();
   const [files, setFiles] = useState([]);
   const { categories } = useGetProductCategories();
-  const { response, postProduct } = usePostProduct();
+  const { postProduct } = usePostProduct();
   const { editProductById } = useEditProductById();
   const { register, handleSubmit, watch, formState: { errors }, control, setValue, getValues } = useForm({
     defaultValues: {
@@ -30,7 +30,7 @@ const FormProduct = ({ product }) => {
       price: firstMayusc(product?.price) || "",
     }
   });
-  
+
   useEffect(() => {
     if (product)
       setValue("productCategoryId", product?.productCategoryId);
@@ -46,39 +46,42 @@ const FormProduct = ({ product }) => {
   }, [product])
 
   const onSubmit = data => {
-    const formData = new FormData();
+    console.log("hola");
+    console.log(data);
+    // const formData = new FormData();
+    // data.image = files;
 
-    data.image = files;
+    // for (let clave in data) {
+    //   if (clave != "image") {
+    //     console.log(clave, data[clave]);
+    //     formData.append(clave, data[clave]);
+    //   } else {
+    //     console.log(data[clave]);
+    //     for (let i = 0; i < data[clave].length; i++) {
+    //       formData.append("image", data[clave][i])
+    //     }
+    //   }
 
-    for (let clave in data) {
-      if (clave != "image") {
-        console.log(clave, data[clave]);
-        formData.append(clave, data[clave]);
-      } else {
-        console.log(data[clave]);
-        for (let i = 0; i < data[clave].length; i++) {
-          formData.append("image", data[clave][i])
-        }
-      }
-    }
+    // if (product?.id) {
+    //   editProductById(product.id, formData)
+    //     .then(res => {
+    //       console.log(res);
+    //       router.push("/")
 
-    if (product?.id) {
-      editProductById(product.id,formData)
-      .then(res=>{
-        console.log(res);
-        router.push("/")
-
-      });
-    } else {
-      postProduct(`${baseUrl}/api/v1/products`, formData)
-        .then(res => {
-          console.log(res);
-          router.push("/")
-        })
-    }
+    //     }).catch(error => console.log(error));
+    // } else {
+    //   console.log("post");
+    //   postProduct(`${baseUrl}/api/v1/products`, formData)
+    //     .then(res => {
+    //       console.log(res);
+    //       router.push("/")
+    //     }).catch(error => console.log(error));
+    // }
   }
+
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
+    <form className={styles.form} onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data"
+      id="formProduct">
       <div>
         <InputWithLabel id="name" name="name" type="text" label="Product name"
           register={{ ...register("name", { required: true }) }} />
@@ -102,13 +105,13 @@ const FormProduct = ({ product }) => {
       </div>
       <div>
         <InputImageWithLabel id="image" name="image" label="UPLOAD IMAGES"
-          register={{ ...register("image", { required: true }) }}
+          register={{ ...register("image") }}
           files={files} setFiles={setFiles} />
       </div>
       <div>
         <br />
         <br />
-        <button type="submit" className={styles.submit}>Send <RiSendPlane2Fill /></button>
+        <button type="submit" className={styles.submit} form="formProduct">Send <RiSendPlane2Fill /></button>
       </div>
     </form>
   )
