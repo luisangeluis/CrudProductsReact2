@@ -1,10 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { RiSendPlane2Fill } from "react-icons/ri";
-import { useRouter } from "next/router";
 //Hooks
-import usePostProduct from "@/hooks/usePostProduct";
-import useEditProductById from "@/hooks/useEditProductById";
 import useGetProductCategories from "@/hooks/useGetProductCategories";
 //Styles
 import styles from "./FormProduct.module.scss";
@@ -15,13 +12,10 @@ import TextAreaWithLabel from '../textAreaWithLabel/TextAreaWithLabel'
 import firstMayusc from "@/utils/firstMayusc";
 import InputImageWithLabel from "../inputImageWithLabel/InputImageWithLabel";
 
-const FormProduct = ({ product }) => {
-  const baseUrl = process.env.API_URL;
-  const router = useRouter();
+const FormProduct = ({ product, submit }) => {
   const [files, setFiles] = useState([]);
   const { categories } = useGetProductCategories();
-  const { postProduct } = usePostProduct();
-  const { editProductById } = useEditProductById();
+  
   const { register, handleSubmit, watch, formState: { errors }, control, setValue, getValues } = useForm({
     defaultValues: {
       name: firstMayusc(product?.name) || "",
@@ -46,37 +40,23 @@ const FormProduct = ({ product }) => {
   }, [product])
 
   const onSubmit = data => {
-    console.log("hola");
-    console.log(data);
-    // const formData = new FormData();
-    // data.image = files;
+    const formData = new FormData();
 
-    // for (let clave in data) {
-    //   if (clave != "image") {
-    //     console.log(clave, data[clave]);
-    //     formData.append(clave, data[clave]);
-    //   } else {
-    //     console.log(data[clave]);
-    //     for (let i = 0; i < data[clave].length; i++) {
-    //       formData.append("image", data[clave][i])
-    //     }
-    //   }
+    data.image = files;
 
-    // if (product?.id) {
-    //   editProductById(product.id, formData)
-    //     .then(res => {
-    //       console.log(res);
-    //       router.push("/")
+    for (let clave in data) {
+      if (clave != "image") {
+        console.log(clave, data[clave]);
+        formData.append(clave, data[clave]);
+      } else {
+        console.log(data[clave]);
+        for (let i = 0; i < data[clave].length; i++) {
+          formData.append("image", data[clave][i])
+        }
+      }
+    }
 
-    //     }).catch(error => console.log(error));
-    // } else {
-    //   console.log("post");
-    //   postProduct(`${baseUrl}/api/v1/products`, formData)
-    //     .then(res => {
-    //       console.log(res);
-    //       router.push("/")
-    //     }).catch(error => console.log(error));
-    // }
+    submit(formData)
   }
 
   return (

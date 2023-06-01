@@ -6,9 +6,9 @@ import styles from "./ConfirmationDialog.module.scss";
 import { useRouter } from "next/router";
 
 const ConfirmationDialog = ({ message, itemId, setIsOpen }) => {
+  const router = useRouter();
   const dispatch = useDispatch();
   const products = useSelector(state => state.products);
-  const router = useRouter();
 
   const handleClick = () => {
     dispatch(deleteProduct(itemId));

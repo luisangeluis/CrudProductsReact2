@@ -11,9 +11,9 @@ export const productsSlice = createSlice({
   initialState: {
     products: [],
     isError: false,
-    message: ""
+    message: "",
+    isLoading: false
   },
-  // initialState: null,
   reducers: {
     setProducts: (state, action) => action.payload
   }
@@ -22,15 +22,32 @@ export const productsSlice = createSlice({
 export const { setProducts } = productsSlice.actions;
 export default productsSlice.reducer;
 
-export const getProducts = () => (dispatch) => {
+export const getProducts = (message) => (dispatch) => {
+  dispatch(setProducts({ isLoading: true }))
+
   axios.get("https://crud-products-node.onrender.com/api/v1/products")
     .then(res => {
       console.log(res.data.response)
-      dispatch(setProducts({ products: res.data.response, isError: false, message: "ok" }))
+      dispatch(setProducts({ products: res.data.response, isLoading: false, message }))
+
     })
     .catch(error => {
       console.log(error)
-      dispatch(setProducts({ products: [], isError: true, message: `${error.message}` }))
+      dispatch(setProducts({ isError: true, isLoading: false, message: `${error.message}` }))
+    });
+}
+
+export const deleteProduct = (productId) => (dispatch) => {
+  dispatch(setProducts({ isError: false, isLoading: true }))
+
+  axios.delete(`${baseUrl}/api/v1/products/${productId}`)
+    .then(res => {
+      console.log(res.data);
+      dispatch(getProducts("Product deleted"));
+    })
+    .catch((error) => {
+      console.log(error);
+      dispatch(setProducts({ isError: true, isLoading: false,message:`${error.message}` }))
 
     });
 }
@@ -43,17 +60,6 @@ export const createProduct = (data) => (dispatch) => {
     .catch((error) => console.log(error));
 }
 
-export const deleteProduct = (productId) => (dispatch) => {
-
-  axios.delete(`${baseUrl}/api/v1/products/${productId}`)
-    .then(res => {
-      console.log(res.data);
-      dispatch(getProducts());
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
 
 export const editProduct = (productId, data) => (dispatch) => {
   axios.put(`${baseUrl}/api/v1/products/${productId}`, data)

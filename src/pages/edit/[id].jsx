@@ -1,25 +1,30 @@
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+//Hooks
+import useGetProductById from "@/hooks/useGetProductById";
+import useEditProductById from "@/hooks/useEditProductById";
 //Styles
 import styles from "../../styles/update.module.scss";
 //Components
 import MainLayout from '@/components/layout/mainLayout/MainLayout';
 import FormProduct from '@/components/molecules/formProduct/FormProduct';
-import useGetProductById from "@/hooks/useGetProductById";
-import { useEffect } from "react";
+import PopUp from "@/components/atoms/popUp/PopUp";
+import Loader from "@/components/organisms/loader/Loader";
 
 const Edit = () => {
   const router = useRouter();
   const { id } = router.query;
   const { product, getProductById } = useGetProductById(id);
+  const { response, editProductById } = useEditProductById(id);
+  const loader = useSelector(state=>state.loader);
 
   return (
     <section>
+      {loader.isLoading && <Loader />}
+      {loader.message.length && <PopUp message={loader.message} />}
       <MainLayout>
-        {/* <div className="container"> */}
-
-          <h1 className={styles.title}>Edit</h1>
-          <FormProduct product={product} />
-        {/* </div> */}
+        <h1 className={styles.title}>Edit</h1>
+        <FormProduct product={product} submit={editProductById} />
       </MainLayout>
     </section>
   )

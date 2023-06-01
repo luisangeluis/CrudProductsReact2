@@ -1,21 +1,40 @@
+import { setLoader } from '@/store/slices/loader.slice';
 import axios from 'axios';
-import { useState } from 'react'
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux';
 
 const usePostProduct = () => {
+  const dispatch = useDispatch();
+  const router = useRouter();
   const [response, setResponse] = useState({
-    product: {},
+    product: [],
     isError: false,
     message: ""
   })
 
-  const postProduct = async (url, data) => {
-    try {
-      const res = await axios.post(`${url}`, data);
+  useEffect(() => {
+    dispatch(setLoader({ isLoading: false, isError: false, message: `` }))
+    
+  }, [])
+  
 
-      return res;
-    } catch (error) {
-      return error;
-    }
+  const postProduct = (data) => {
+    dispatch(setLoader({ isLoading: true, isError: false, message: `` }));
+    
+    axios.post(`${process.env.API_URL}/api/v1/products`, data)
+      .then(res => {
+        // console.log(res);
+        dispatch(setLoader({ isLoading: false, isError: false, message: `Prduct created successfully` }))
+
+        setTimeout(() => {
+          router.push("/")
+        }, 3500);
+      }).catch(error => {
+        // console.log(error)
+        dispatch(setLoader({ isLoading: false, isError: true, message: `${error.message}` }))
+
+      })
   }
 
   return { response, postProduct };

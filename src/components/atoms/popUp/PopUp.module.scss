@@ -1,0 +1,27 @@
+.span {
+  display: inline-flex;
+  position: absolute;
+  top: 2rem;
+  right: 1rem;
+  z-index: 2;
+  background-color: var(--color-four);
+  color: var(--color-white);
+  padding: .5rem 1rem;
+  box-shadow: 1px 1px 2px 1px var(--color-white);
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  animation: fromRightAnimation .5s;
+}
+
+@keyframes fromRightAnimation {
+  0%{
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  1000%{
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+

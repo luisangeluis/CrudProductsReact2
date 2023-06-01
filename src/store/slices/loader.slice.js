@@ -2,7 +2,11 @@ const { createSlice } = require("@reduxjs/toolkit");
 
 export const loaderSlice = createSlice({
   name: "loader",
-  initialState:null,
+  initialState:{
+    isLoading:false,
+    isError:false,
+    message:""
+  },
   reducers: {
     setLoader: (state, action) => action.payload
   }
