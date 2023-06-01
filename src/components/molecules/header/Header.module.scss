@@ -4,23 +4,32 @@
   top: 0;
   z-index: 1;
   width: 100%;
-  background-color: var(--color-one);
+  // background-color: var(--color-one);
   min-height: initial;
   transition: all ease-in-out 1s;
   box-shadow: 1px 1px 7px 1px var(--color-one);
   border-bottom-left-radius: .3rem;
   border-bottom-right-radius: .3rem;
 
-  .dark .header{
-    background-color: red;
-  }
+  background-image: linear-gradient(190deg, var(--color-three-2), var(--color-three),var(--color-three-3));
+  animation: animatedBg 7s infinite;
+  background-size: 500%;
+  // transition: all ease 500ms;
+
+
+
+  // .dark .header{
+  //   background-color: red;
+  // }
 
   &.headerEfect {
     background-color: transparent;
-    box-shadow: 1px 1px 7px 1px var(--color-black);
+    background-image:none;
+
+    box-shadow: 1px 1px 7px 1px var(--color-white);
     // backdrop-filter: blur(1.0px);
-    transition: background-color ease 500ms;
-    backdrop-filter: blur(.1px);
+    // transition: all ease 500ms;
+    // backdrop-filter: blur(.1px);
 
   }
 }
@@ -30,13 +39,8 @@
   justify-content: space-between;
   align-items: center;
   height: 4rem;
-
-  a {
-    // width: 10rem;
-    // height: inherit;
-    // display: block;
-  }
-
+  color: var(--color-white);
+ 
   .mainLink {
     display: flex;
     justify-content: center;
@@ -45,10 +49,6 @@
     font-weight: bolder;
   }
 
-  // .logo {
-  //   max-height: 100%;
-  //   max-width: 100%;
-  // }
 }
 
 .toogleButton {
@@ -63,10 +63,7 @@
 .navbar {
   max-height: 0;
   overflow: hidden;
-  // margin: 1rem auto;
-  // transition: max-height ease-in-out 500ms;
-  // background-color: var(--color-four);
-  border-radius: .3rem;
+    border-radius: .3rem;
 
   ul {
     padding: .5rem;
@@ -98,6 +95,19 @@
   }
 }
 
+@keyframes animatedBg {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
 
 
 @media screen and (min-width:768px) {

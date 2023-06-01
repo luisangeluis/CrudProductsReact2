@@ -20,7 +20,7 @@ const Header = () => {
 
       setTimeout(() => {
         headerRef.current?.classList.remove(`${styles.headerEfect}`);
-      }, 1200);
+      }, 1800);
     }
     window.addEventListener("scroll", handleScroll);
 

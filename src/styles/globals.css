@@ -6,6 +6,8 @@
   --color-one: #44749d;
   --color-two: #78b395;
   --color-three: #e84d5b;
+  --color-three-2: #d0545f;
+  --color-three-3: #b65a61;
   --color-four: #e5d599;
   --color-five: #4a2512;
   --color-gray: #e5e5e5;
@@ -27,10 +29,14 @@ body {
 
 .dark{
   --color-one:#184064;
+  --color-one:black;
+
   --color-two: #2b3f34;
   --color-three: #4f1a1e;
   --color-four: #48422f;
   --color-five: #2b150a;
+  --color-white:#f1f1f1;
+  /* --color--white:#f0f0f0; */
   /* --color-black: #ffffff;
   --color-white: #000000; */
 

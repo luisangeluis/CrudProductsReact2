@@ -42,10 +42,10 @@ const ProductCard = ({ product }) => {
               <BsFillTrashFill size={"100%"} title="Delete" />
             </button>
             <button onClick={handleClickEdit} className={styles.cardBtn} title="Edit">
-              <FaPencilAlt />Edit
+              <FaPencilAlt size={"100%"}/>Edit
             </button>
             <button onClick={handleClickShow} className={styles.cardBtn} title="Show">
-              <AiOutlineEye />Show
+              <AiOutlineEye size={"100%"}/>Show
             </button>
           </div>
         </div>
