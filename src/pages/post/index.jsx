@@ -16,7 +16,7 @@ const Post = () => {
   return (
     <section className={styles.createContainer}>
       {loader.isLoading && <Loader />}
-      {loader.message.length && <PopUp message={loader.message}/>}
+      {loader.message.length > 0 && <PopUp message={loader.message}/>}
       {/* <PopUp /> */}
       <MainLayout>
         <h1 className={styles.title}>Create</h1>

@@ -1,10 +1,16 @@
 .InputImageWithLabelContainer {
   display: flex;
   justify-content: space-between;
+  // justify-content: stretch;
   align-items: center;
+  // gap: .5rem;
+
+  margin: 1.5rem auto;
+
+
   width: 100%;
   height: 6rem;
-  margin: 1.5rem auto;
+  // margin: 1.5rem auto;
   // padding: 0 .5rem;
   background-color: var(--color-white);
   color: var(--color-three);
@@ -15,54 +21,68 @@
   font-weight: bolder;
   cursor: pointer;
   position: relative;
-  
+
   .labelContainer{
     display: flex;
     justify-content: center;
     align-items: center;
     padding: .5rem;
+    // width: 100%;
     height: 100%;
     background-color: var(--color-four);
     overflow: hidden;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+
+    // width: 10%;
+
     label{
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 100%;
-      height: 100%;
+      // width: 10%;
+      // height: 100%;
       cursor: pointer;
       flex-grow: 1;
-      
+
     }
   }
-  
+
 
   .files{
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    flex-grow: 1;
+    // flex-grow: 1;
     height: 100%;
-    width: 70%;
+    // width: 80%;
+    // overflow: auto;
     overflow-y: auto;
     padding: .5rem;
     gap: .5rem;
+    // padding: 1rem;
+    // display: flex;
+    // flex-wrap: wrap;
+    flex-grow: 1;
 
     .file{
-      // width: 50%;
-      padding: .3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // width: 30%;
+      padding: 1rem;
       border-radius: 5px;
       text-align: center;
       background-color: var(--color-five);
       color: var(--color-white);
+      overflow: hidden;
+      font-size: .7rem;
     }
   }
 }
 
 @media screen and (min-width:768px) {
   .InputImageWithLabelContainer {
-    width: 75%;
+    // width: 90%;
 
   }
 }

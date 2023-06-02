@@ -3,7 +3,12 @@
 @tailwind utilities;
 
 :root {
+  /* --color-one: #162d42; */
   --color-one: #44749d;
+  /* --color-one: #203f5a; */
+  --color-one-1: #517b9f;
+  --color-one-2: #6888a3;
+  --color-one-3: #8095a6;
   --color-two: #78b395;
   --color-three: #e84d5b;
   --color-four: #e5d599;
@@ -13,6 +18,7 @@
   --color-black: #000000;
   --color-bg-modal: #00000050;
   --color-transparent: #22211e;
+  --color-gray:gray;
 }
 
 * {
@@ -26,16 +32,15 @@ body {
 }
 
 .dark{
-  --color-one:#184064;
+  --color-one:#162d42;
   --color-two: #2b3f34;
   --color-three: #4f1a1e;
   --color-four: #48422f;
   --color-five: #2b150a;
-  /* --color-black: #ffffff;
-  --color-white: #000000; */
 
-  /* background-color: #000000;
-  color: white; */
+  /* --color-white:#000; */
+
+
 }
 
 .container {

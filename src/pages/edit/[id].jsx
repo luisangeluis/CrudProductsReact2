@@ -24,7 +24,7 @@ const Edit = () => {
       {loader.message.length && <PopUp message={loader.message} />}
       <MainLayout>
         <h1 className={styles.title}>Edit</h1>
-        <FormProduct product={product} submit={editProductById} />
+        <FormProduct product={product.response} submit={editProductById} />
       </MainLayout>
     </section>
   )
