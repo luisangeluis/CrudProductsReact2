@@ -90,8 +90,9 @@ const FormProduct = ({ product, submit }) => {
       </div>
       <div>
         <br />
-        <br />
-        <button type="submit" className={styles.submit} form="formProduct">Send <RiSendPlane2Fill /></button>
+        <button type="submit" className={styles.submit} form="formProduct">
+          {product ? "Edit" : "Create"}<RiSendPlane2Fill />
+        </button>
       </div>
     </form>
   )
