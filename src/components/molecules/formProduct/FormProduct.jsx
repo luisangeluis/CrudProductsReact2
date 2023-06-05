@@ -15,7 +15,7 @@ import InputImageWithLabel from "../inputImageWithLabel/InputImageWithLabel";
 const FormProduct = ({ product, submit }) => {
   const [files, setFiles] = useState([]);
   const { categories } = useGetProductCategories();
-  
+
   const { register, handleSubmit, watch, formState: { errors }, control, setValue, getValues } = useForm({
     defaultValues: {
       name: firstMayusc(product?.name) || "",
@@ -40,6 +40,7 @@ const FormProduct = ({ product, submit }) => {
   }, [product])
 
   const onSubmit = data => {
+    console.log(data);
     const formData = new FormData();
 
     data.image = files;
@@ -84,8 +85,7 @@ const FormProduct = ({ product, submit }) => {
         {errors.productCategoryId && <p className={styles.error}>This field is required</p>}
       </div>
       <div>
-        <InputImageWithLabel id="image" name="image" label="UPLOAD IMAGES"
-          register={{ ...register("image") }}
+        <InputImageWithLabel id="image" name="image" label="UPLOAD IMAGES" register={{ ...register("image") }}
           files={files} setFiles={setFiles} />
       </div>
       <div>

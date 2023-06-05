@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { BsFillTrashFill } from "react-icons/bs";
 import { FaPencilAlt } from "react-icons/fa";
 import { useRouter } from "next/router";
-import {AiOutlineEye} from "react-icons/ai";
+import { AiOutlineEye } from "react-icons/ai";
 //Utils
 import firstMayusc from "@/utils/firstMayusc";
 //Styles
@@ -28,8 +28,9 @@ const ProductCard = ({ product }) => {
     <>
       <article className={styles.card}>
         <div className={styles.imageContainer}>
-          <Image src={product.product_images.length ? `${product.product_images[0].imageUrl}`:"/img/no-image2.jpg"} 
-          className={styles.cardImage} width={1000} height={1000} alt="temporal-image"/>
+         
+          <Image src={product.product_images.length > 0 ? `${product.product_images[0].imageUrl}` : "/img/no-image2.jpg"}
+            className={styles.cardImage} width={1000} height={1000} alt="temporal-image" />
         </div>
         <div className={styles.cardBody}>
           <div className={styles.cardInfo}>
@@ -42,10 +43,10 @@ const ProductCard = ({ product }) => {
               <BsFillTrashFill size={"100%"} title="Delete" />
             </button>
             <button onClick={handleClickEdit} className={styles.cardBtn} title="Edit">
-              <FaPencilAlt size={"100%"}/>Edit
+              <FaPencilAlt size={"100%"} />Edit
             </button>
             <button onClick={handleClickShow} className={styles.cardBtn} title="Show">
-              <AiOutlineEye size={"100%"}/>Show
+              <AiOutlineEye size={"100%"} />Show
             </button>
           </div>
         </div>
