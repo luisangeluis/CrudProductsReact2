@@ -4,56 +4,44 @@ import styles from "./inputImageWithLabel.module.scss";
 import InputImage from '@/components/atoms/inputImage/InputImage'
 import Image from "next/image";
 
-const InputImageWithLabel = ({ id, name, register, label, files, setFiles }) => {
-  const [miniFiles, setMiniFiles] = useState();
+const InputImageWithLabel = ({ id, name, register, label, files, setFiles, watch }) => {
+  const [images, setImages] = useState([]);
+
+  console.log(files);
+  console.log(images);
 
   useEffect(() => {
-    if(files)
-    setMiniImages(files);
+    if (files.length > 0) {
+      // setImages(files);
+      getMiniImages(files);
+    }
   }, [files])
 
-
   const handleChange = (e) => {
+    const currentImages = [...files];
     const newFile = e.target.files[0];
 
-    if (newFile) {
-      addFiles(newFile);
-      // setMiniImages();
-    }
+    currentImages.push(newFile);
+
+    setFiles(currentImages);
   }
 
+  const getMiniImages = (files) => {
+    const prevImages = [...images];
 
-  const addFiles = (file) => {
-    const currentFiles = [...files];
-
-    currentFiles.push(file);
-    console.log(currentFiles);
-    setFiles(currentFiles);
-  }
-
-
-  const setMiniImages = (files) => {
-    const miniImages = [];
-    // const currentMiniFiles = [...miniFiles]
-    files.map(file => {
+    files.map((file, i) => {
       if (file.type.match("image.*")) {
         const reader = new FileReader();
+
+        reader.readAsDataURL(file);
 
         reader.onload = e => {
           const thumbnailUrl = e.target.result;
 
-          // currentMiniFiles.push(thumbnailUrl);
-          // setMiniFiles(currentMiniFiles);
-          miniImages.push(thumbnailUrl);
+          setImages([...prevImages, thumbnailUrl])
         }
-
-        reader.readAsDataURL(file);
       }
-
     })
-
-    console.log(typeof miniImages);
-    setMiniFiles(miniImages);
   }
 
   return (
@@ -63,11 +51,13 @@ const InputImageWithLabel = ({ id, name, register, label, files, setFiles }) => 
         <label htmlFor={id}>{label}</label>
       </div>
       <div className={styles.files}>
-        {miniFiles?.map((file, i) => (
-          <div className={styles.imageContainer} key={i}>
-            <Image src={file} width={200} height={200} alt={"image"} />
-          </div>
-        ))}
+        {
+          images?.map((file, i) => (
+            <div className={styles.imageContainer} key={i}>
+              <Image src={file} width={200} height={200} alt={"image"} />
+            </div>
+          ))
+        }
       </div>
     </div >
   )

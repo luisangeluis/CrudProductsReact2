@@ -13,6 +13,7 @@ import Loader from '@/components/organisms/loader/Loader';
 import { getProducts } from '@/store/slices/products.slice';
 import PopUp from '@/components/atoms/popUp/PopUp';
 import { setProducts } from '@/store/slices/products.slice';
+import ProductFilter from '@/components/molecules/productFilter/ProductFilter';
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -35,18 +36,21 @@ export default function Home() {
   return (
     <MainLayout>
       {products.isLoading && <Loader />}
-      {
-        products.message?.length > 0 && <PopUp message={products.message} />
-      }
+      {products.message?.length > 0 && <PopUp message={products.message} />}
       <section className={styles.titleSwitch} >
         <h1 className={styles.title}>PRODUCTS</h1>
         <SwitchTheme />
       </section>
-      <section className={styles.productSection}>
+      {/* <section className={styles.productSection}>
+
         {products.products?.map((product) => (
           <ProductCard product={product} key={product.id} />
         ))}
-      </section>
+
+      </section> */}
+        {
+          <ProductFilter products={products.products} />
+        }
     </MainLayout>
   )
 }

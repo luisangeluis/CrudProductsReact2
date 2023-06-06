@@ -16,14 +16,16 @@ const Edit = () => {
   const { id } = router.query;
   const { product, getProductById } = useGetProductById(id);
   const { response, editProductById } = useEditProductById(id);
-  const loader = useSelector(state=>state.loader);
+  const loader = useSelector(state => state.loader);
+
+  console.log(product);
 
   return (
     <section>
-      {loader.isLoading && <Loader />}
-      {loader.message.length && <PopUp message={loader.message} />}
+      {product.isLoading && <Loader />}
+      {product.message.length > 0 && <PopUp message={loader.message} />}
       <MainLayout>
-        <h1 className={styles.title}>Edit</h1>
+        <h1 className={styles.title}>Edit product</h1>
         <FormProduct product={product.response} submit={editProductById} />
       </MainLayout>
     </section>

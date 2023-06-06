@@ -11,8 +11,10 @@ import SelectWithLabel from '../selectWithLabel/SelectWithLabel'
 import TextAreaWithLabel from '../textAreaWithLabel/TextAreaWithLabel'
 import firstMayusc from "@/utils/firstMayusc";
 import InputImageWithLabel from "../inputImageWithLabel/InputImageWithLabel";
+import Image from "next/image";
 
 const FormProduct = ({ product, submit }) => {
+  console.log(product);
   const [files, setFiles] = useState([]);
   const { categories } = useGetProductCategories();
 
@@ -25,10 +27,12 @@ const FormProduct = ({ product, submit }) => {
     }
   });
 
+
   useEffect(() => {
-    if (product)
-      setValue("productCategoryId", product?.productCategoryId);
-  }, [categories])
+      if (product){
+        setValue("productCategoryId", product?.productCategoryId);
+      }
+  }, [categories,product])
 
   useEffect(() => {
     if (product) {
@@ -40,24 +44,21 @@ const FormProduct = ({ product, submit }) => {
   }, [product])
 
   const onSubmit = data => {
-    console.log(data);
     const formData = new FormData();
 
     data.image = files;
 
     for (let clave in data) {
       if (clave != "image") {
-        console.log(clave, data[clave]);
         formData.append(clave, data[clave]);
       } else {
-        console.log(data[clave]);
         for (let i = 0; i < data[clave].length; i++) {
-          formData.append("image", data[clave][i])
+          formData.append("image", data[clave][i]);
         }
       }
     }
 
-    submit(formData)
+    submit(formData);
   }
 
   return (
@@ -86,12 +87,28 @@ const FormProduct = ({ product, submit }) => {
       </div>
       <div>
         <InputImageWithLabel id="image" name="image" label="UPLOAD IMAGES" register={{ ...register("image") }}
-          files={files} setFiles={setFiles} />
+          files={files} setFiles={setFiles} watch={watch} />
+
+        {
+          product && (
+            <>
+            <h2 className={styles.subtitle}>Curren Images</h2>
+            <div className={styles.productImages}>
+              {
+                product.product_images?.map((image,i) => {
+                  console.log(image);
+                  return <Image src={image.imageUrl} width={150} height={150} alt={"image"} key={i}/>
+                })
+              }
+            </div>
+            </>
+          )
+        }
       </div>
       <div>
         <br />
         <button type="submit" className={styles.submit} form="formProduct">
-          {product ? "Edit" : "Create"}<RiSendPlane2Fill />
+          {product ? "Send" : "Create"}<RiSendPlane2Fill />
         </button>
       </div>
     </form>
