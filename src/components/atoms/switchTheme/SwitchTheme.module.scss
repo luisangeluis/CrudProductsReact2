@@ -1,50 +1,60 @@
-.btnThemeContainer{
+.btnThemeContainer {
   padding: .5rem;
-  button{
+
+  button {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 1rem;
     width: 6rem;
     height: 2.7rem;
-    background-color: var(--color-gray);
+    background-color: var(--color-white-dinamic);
     // background-color: blue;
-    border-radius: .5rem;
+    border-radius: 1.3rem;
     position: relative;
 
-    .switch{
+    .switch {
       width: 50%;
-      height:100%;
-      background-color: var(--color-two);
+      height: 100%;
+      background-color: var(--color-black-dinamic);
       position: absolute;
       top: 0px;
-      left:0px;
+      left: 0px;
       right: 0;
       bottom: 0;
       border-radius: 10px;
       padding: .5rem;
-      border: solid 5px var(--color-gray);
+      border: solid 2px var(--color-black-gray);
       transition: all ease-in-out 300ms;
 
-      &.dark{
+      &.dark {
         left: unset;
-        right:0;
+        right: 0;
 
       }
     }
-    svg{
+
+    svg {
       display: block;
       width: 40px;
       height: 25px;
+
+
+
     }
+
+    span:nth-child(1) svg {
+      color: var(--color-four);
+    }
+
   }
 }
 
 @media screen and (min-width:768px) {
-  .btnThemeContainer{
+  .btnThemeContainer {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-  
+
   }
 }

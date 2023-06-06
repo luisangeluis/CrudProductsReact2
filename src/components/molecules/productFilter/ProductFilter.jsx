@@ -22,7 +22,7 @@ const ProductFilter = ({ products }) => {
   return (
     <div className={styles.productFilterContainer}>
       <div className={styles.searchSection}>
-        <Input id={"search"} name={"search"} type="text" onChange={handleChange} />
+        <Input id={"search"} name={"search"} type="text" onChange={handleChange} placeholder="Search"/>
       </div>
       <div className={styles.productSection}>
         {filteredProducts?.map((product) => (

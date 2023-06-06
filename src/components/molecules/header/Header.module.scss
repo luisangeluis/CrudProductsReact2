@@ -4,7 +4,6 @@
   top: 0;
   z-index: 1;
   width: 100%;
-  // background-color: var(--color-one);
   min-height: initial;
   transition: all ease-in-out 5s;
   box-shadow: 1px 1px 7px 1px var(--color-one);
@@ -14,22 +13,15 @@
   background-image: linear-gradient(190deg, var(--color-three-2), var(--color-three),var(--color-three-3));
   animation: animatedBg 7s infinite;
   background-size: 500%;
-  // transition: all ease 500ms;
+  transition: all ease-in-out 1s;
 
-
-
-  // .dark .header{
-  //   background-color: red;
-  // }
-
+  
   &.headerEfect {
     background-color: transparent;
     background-image:none;
 
     box-shadow: 1px 1px 7px 1px var(--color-white);
-    // backdrop-filter: blur(1.0px);
-    // transition: all ease 500ms;
-    // backdrop-filter: blur(.1px);
+    
 
   }
 }
@@ -39,7 +31,7 @@
   justify-content: space-between;
   align-items: center;
   height: 4rem;
-  color: var(--color-white);
+  color: var(--color-black-dinamic);
  
   .mainLink {
     display: flex;
@@ -81,8 +73,8 @@
     justify-content: center;
     align-items: center;
     padding: .7rem .5rem;
-    background-color: var(--color-white);
-    color: var(--color-black);
+    background-color: var(--color-black-dinamic);
+    color: var(--color-white-dinamic);
     border-radius: 5px;
     font-weight: bold;
 

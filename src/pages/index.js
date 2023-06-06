@@ -41,16 +41,7 @@ export default function Home() {
         <h1 className={styles.title}>PRODUCTS</h1>
         <SwitchTheme />
       </section>
-      {/* <section className={styles.productSection}>
-
-        {products.products?.map((product) => (
-          <ProductCard product={product} key={product.id} />
-        ))}
-
-      </section> */}
-        {
-          <ProductFilter products={products.products} />
-        }
+      {<ProductFilter products={products.products} />}
     </MainLayout>
   )
 }
