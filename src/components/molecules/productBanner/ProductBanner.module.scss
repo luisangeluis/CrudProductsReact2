@@ -53,9 +53,7 @@
       width: 90%;
       height: 90%;
       padding: 1rem;
-      // border-radius: 10px;
-      background-color: var(--color-white);
-      // border: solid 1px var(--color-one);
+      background-color: var(--color-white-dinamic);
       text-align: center;
       box-shadow: 1px 1px 10px 1px var(--color-one);
     }
@@ -65,9 +63,41 @@
 @media screen and (min-width:768px) {
   .banner {
     display: grid;
-    grid-template-columns: .8fr 2fr 1.5fr;
-    // height: 60vh;
+    grid-template-columns: 1fr 2fr 1.5fr;
     height: 30rem;
+
+    .bannerImages {
+      padding: .5rem;
+      max-height: 100%;
+      overflow-y: auto;
+
+      transition: all ease-in-out 750ms;
+
+      &::-webkit-scrollbar {
+        // width: 10px;
+        background-color: red;
+        background-color: inherit;
+
+      }
+
+      scrollbar-width:thin;
+      scrollbar-color: transparent transparent;
+
+      &:hover {
+        &::-webkit-scrollbar {
+          background-color: var(--color-black-dinamic);
+          border-radius: 10px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: var(--color-white-dinamic);
+          border-radius: 10px;
+        }
+
+        scrollbar-color: var(--color-white-dinamic) var(--color-black-dinamic);
+      }
+
+    }
 
   }
 }

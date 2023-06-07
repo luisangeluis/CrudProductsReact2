@@ -1,26 +1,35 @@
-.productFilterContainer{
-  
-  .searchSection{
+.productFilterContainer {
+
+  .searchSection {
     margin: 2rem 0;
   }
 
- 
+
 }
 
 @media screen and (min-width:768px) {
-  .productFilterContainer{
-  
-    .searchSection{
+  .productFilterContainer {
+
+    .searchSection {
       margin: 2rem 0;
       margin-left: auto;
-      width:50%;
+      width: 50%;
     }
-  
-    .productSection{
+
+    .productSection {
       display: grid;
-      grid-template-columns: repeat(3,1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
     }
   }
-  
+
+}
+
+@media screen and (min-width:992px) {
+  .productFilterContainer {
+    .productSection {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
 }
