@@ -1,15 +1,7 @@
 .mainLayout {
-  // background-color: var(--color-two);
-  background-image: linear-gradient(190deg, var(--color-white), var(--color-one) 99%);
-  background-size: 500%;
-  // animation: animatedBg 10s infinite;
-  // background: linear-gradient(90deg, var(--color-white), var(--color-one));
+  background-image: linear-gradient(190deg, var(--color-white), var(--color-one));
+  // background-size: 2500%;
 
-  // &.dark{
-  //   color:white;
-  //   background-image: linear-gradient(190deg, var(--color-black), var(--color-one) 99%);
-
-  // }
   .container {
     display: flex;
     justify-content: center;
@@ -21,7 +13,7 @@
       padding: .5rem;
       flex-grow: 1;
 
-      .square{
+      .square {
         position: absolute;
         inset: 0;
         background-color: #00000030;
@@ -32,16 +24,9 @@
   }
 }
 
-@keyframes animatedBg {
-  0% {
-    background-position: 0% 50%;
-  }
+@media screen and (min-width:768px) {
+  .mainLayout {
 
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
+    // background-size: 500%;
   }
 }
