@@ -4,7 +4,7 @@ import styles from "./inputImageWithLabel.module.scss";
 import InputImage from '@/components/atoms/inputImage/InputImage'
 import Image from "next/image";
 
-const InputImageWithLabel = ({ id, name, register, label, files, setFiles, watch }) => {
+const InputImageWithLabel = ({ id, name, register, label, files, setFiles, placeholder }) => {
   const [images, setImages] = useState([]);
 
   console.log(files);
@@ -12,7 +12,6 @@ const InputImageWithLabel = ({ id, name, register, label, files, setFiles, watch
 
   useEffect(() => {
     if (files.length > 0) {
-      // setImages(files);
       getMiniImages(files);
     }
   }, [files])
@@ -45,21 +44,28 @@ const InputImageWithLabel = ({ id, name, register, label, files, setFiles, watch
   }
 
   return (
-    <div className={styles.InputImageWithLabelContainer}>
-      <InputImage id={id} name={name} register={register} onChange={handleChange} />
-      <div className={styles.labelContainer}>
-        <label htmlFor={id}>{label}</label>
-      </div>
-      <div className={styles.files}>
-        {
-          images?.map((file, i) => (
-            <div className={styles.imageContainer} key={i}>
-              <Image src={file} width={200} height={200} alt={"image"} />
-            </div>
-          ))
-        }
-      </div>
-    </div >
+    <>
+
+      <div className={styles.InputImageWithLabelContainer}>
+        <InputImage id={id} name={name} register={register} onChange={handleChange} placeholder={placeholder} />
+        <div className={styles.labelContainer}>
+          <label htmlFor={id}>
+            {label}
+          </label>
+
+        </div>
+        <div className={styles.files}>
+          {
+            images?.map((file, i) => (
+              <div className={styles.imageContainer} key={i}>
+                <Image src={file} width={200} height={200} alt={"image"} />
+              </div>
+            ))
+          }
+        </div>
+      </div >
+      <h3 className={styles.subtitle}>{placeholder}</h3>
+    </>
   )
 }
 

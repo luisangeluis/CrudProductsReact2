@@ -28,7 +28,7 @@ const useEditProductById = (id) => {
 
         setTimeout(() => {
           router.push("/")
-        }, 3500);
+        }, 3000);
       })
       .catch(error => dispatch(setLoader({ isLoading: false, isError: true, message: `${error.message}` })))
   }

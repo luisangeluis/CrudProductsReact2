@@ -17,7 +17,8 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       headerRef.current?.classList.add(`${styles.headerEfect}`);
-
+      // headerRef.current?.style.backgroundImage="linear-gradient(190deg, var(--color-three-2), var(--color-three), var(--color-three-3));"
+      // console.log(headerRef.current.style.backgroundImage);
       setTimeout(() => {
         headerRef.current?.classList.remove(`${styles.headerEfect}`);
       }, 1800);

@@ -22,8 +22,8 @@ const Edit = () => {
 
   return (
     <section>
-      {product.isLoading && <Loader />}
-      {product.message.length > 0 && <PopUp message={loader.message} />}
+      {loader.isLoading && <Loader />}
+      {loader.message.length > 0 && <PopUp message={loader.message} />}
       <MainLayout>
         <h1 className={styles.title}>Edit product</h1>
         <FormProduct product={product.response} submit={editProductById} />

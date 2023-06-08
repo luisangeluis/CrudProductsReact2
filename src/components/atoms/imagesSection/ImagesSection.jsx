@@ -20,7 +20,7 @@ const ImagesSection = ({ imagesList, onClick,selectedIndex }) => {
             src={image.imageUrl} width={1000} height={1000} alt={"image"}
               onClick={(e) => onClick(e, i)} key={i} />
           )))
-          : "No image"
+          : ""
       }
     </div>
   )

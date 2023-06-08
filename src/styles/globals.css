@@ -4,7 +4,9 @@
 
 :root {
   --color-one: #44749d;
+  --color-one-dinamic: #44749d;
   --color-two: #78b395;
+  --color-two-dinamic: #78b395;
   --color-three: #e84d5b;
   --color-three-2: #d0545f;
   --color-three-3: #b65a61;
@@ -37,7 +39,10 @@ body {
 }
 
 .dark {
-  --color-one: #112b43;
+  /* --color-one: #112b43; */
+  --color-one-dinamic: #0c2c47;
+  --color-two-dinamic: #397255;
+
   --color-two: #94d3b3;
   --color-three: #f7616d;
   --color-four: #e5d599;

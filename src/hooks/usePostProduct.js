@@ -29,7 +29,7 @@ const usePostProduct = () => {
 
         setTimeout(() => {
           router.push("/")
-        }, 3500);
+        }, 3000);
       }).catch(error => {
         // console.log(error)
         dispatch(setLoader({ isLoading: false, isError: true, message: `${error.message}` }))

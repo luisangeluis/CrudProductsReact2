@@ -12,6 +12,7 @@ import styles from "./ProductCard.module.scss";
 import Image from "next/image";
 import ModalContainer from "@/components/organisms/modalContainer/ModalContainer";
 import ConfirmationDialog from "../confirmationDialog/ConfirmationDialog";
+import cutMessage from "@/utils/cutMessage";
 
 const ProductCard = ({ product }) => {
   // console.log(product);
@@ -28,14 +29,15 @@ const ProductCard = ({ product }) => {
     <>
       <article className={styles.card}>
         <div className={styles.imageContainer}>
-         
+
           <Image src={product.product_images.length > 0 ? `${product.product_images[0].imageUrl}` : "/img/no-image2.jpg"}
             className={styles.cardImage} width={1000} height={1000} alt="temporal-image" />
         </div>
         <div className={styles.cardBody}>
           <div className={styles.cardInfo}>
             <h3 className={styles.cardTitle}>{firstMayusc(product.name)}</h3>
-            <p className={styles.cardText}>{firstMayusc(product.description)}</p>
+            {/* <p className={styles.cardText}>{firstMayusc(product.description)}</p> */}
+            <p className={styles.cardText}>{firstMayusc(cutMessage(product.description, 30))}</p>
             <h4 className={styles.cardSubtitle}>${product.price}</h4>
           </div>
           <div className={styles.btnSection}>

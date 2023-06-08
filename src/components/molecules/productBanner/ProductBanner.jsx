@@ -29,7 +29,7 @@ const ProductBanner = ({ product }) => {
       </article>
       <div className={styles.imageContainer}>
         <Image className={styles.bannerImage}
-          src={currentImage ? currentImage.product.imageUrl : "/img/temporalImage.jpg"}
+          src={currentImage ? currentImage.product.imageUrl : "/img/no-image2.jpg"}
           width={500} height={1000} alt={"banner-image"} />
       </div>
       <article className={styles.bannerInfo}>

@@ -1,27 +1,51 @@
 .span {
-  display: inline-flex;
+  display: block;
+  margin: 0 auto;
   position: fixed;
-  top: 2rem;
-  right: 1rem;
+  top: 1rem;
+  left: 0;
+  right: 0;
   z-index: 2;
+  width: 80%;
   background-color: var(--color-four);
-  color: var(--color-white);
+  color: var(--color-white-dinamic);
   padding: .5rem 1rem;
   box-shadow: 1px 1px 2px 1px var(--color-white);
   border-radius: 5px;
   font-weight: bold;
   font-size: 1.2rem;
-  animation: fromRightAnimation .5s;
+  text-align: center;
+  animation: fromUpAnimation .5s;
 }
 
 @keyframes fromRightAnimation {
-  0%{
+  0% {
     transform: translateX(100px);
     opacity: 0;
   }
-  1000%{
+
+  100% {
     transform: translateX(0);
     opacity: 1;
   }
 }
 
+@keyframes fromUpAnimation {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+@media screen and (min-width:768px) {
+  .span {
+    width: 25%;
+
+  }
+}

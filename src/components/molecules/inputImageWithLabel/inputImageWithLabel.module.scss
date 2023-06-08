@@ -1,3 +1,15 @@
+.subtitle {
+  position: relative;
+  top:-1rem;
+  width: 100%;
+  // padding: .5rem;
+  color:var(--color-white-dinamic);
+  font-size: .9rem;
+  font-weight: bold;
+  text-align: right;
+  opacity: .8;
+}
+
 .InputImageWithLabelContainer {
   display: flex;
   justify-content: space-between;
@@ -18,7 +30,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: .5rem;
+    padding: 1rem;
     height: 100%;
     background-color: var(--color-four);
     overflow: hidden;
@@ -42,7 +54,7 @@
     padding: .5rem;
     gap: .5rem;
     flex-grow: 1;
-    color:black;
+    color: black;
 
     .imageContainer {
       display: flex;
@@ -58,7 +70,7 @@
 
       height: 3rem;
 
-      img{
+      img {
         max-width: 100%;
         max-height: 100%;
       }

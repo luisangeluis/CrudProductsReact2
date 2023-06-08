@@ -29,10 +29,10 @@ const FormProduct = ({ product, submit }) => {
 
 
   useEffect(() => {
-      if (product){
-        setValue("productCategoryId", product?.productCategoryId);
-      }
-  }, [categories,product])
+    if (product) {
+      setValue("productCategoryId", product?.productCategoryId);
+    }
+  }, [categories, product])
 
   useEffect(() => {
     if (product) {
@@ -87,23 +87,21 @@ const FormProduct = ({ product, submit }) => {
       </div>
       <div>
         <InputImageWithLabel id="image" name="image" label="UPLOAD IMAGES" register={{ ...register("image") }}
-          files={files} setFiles={setFiles} watch={watch} />
-
-        {
-          product && (
-            <>
+          files={files} setFiles={setFiles} watch={watch}
+          placeholder="Only images smaller than 9 mb, extensions 'png', 'jpg', 'jpeg'" />
+        {product && (
+          <>
             <h2 className={styles.subtitle}>Curren Images</h2>
             <div className={styles.productImages}>
               {
-                product.product_images?.map((image,i) => {
+                product.product_images?.map((image, i) => {
                   console.log(image);
-                  return <Image src={image.imageUrl} width={150} height={150} alt={"image"} key={i}/>
+                  return <Image src={image.imageUrl} width={150} height={150} alt={"image"} key={i} />
                 })
               }
             </div>
-            </>
-          )
-        }
+          </>
+        )}
       </div>
       <div>
         <br />
