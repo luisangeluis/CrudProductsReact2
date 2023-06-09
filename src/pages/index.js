@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 //Styles
 import styles from "../styles/index.module.scss";
 //Components
-import MainLayout from '@/components/layout/mainLayout/mainLayout'
+import MainLayout from '@/components/layout/mainLayout/MainLayout'
 import ProductCard from "@/components/molecules/ProductCard/ProductCard";
 import SwitchTheme from '@/components/atoms/switchTheme/SwitchTheme';
 import Loader from '@/components/organisms/loader/Loader';
