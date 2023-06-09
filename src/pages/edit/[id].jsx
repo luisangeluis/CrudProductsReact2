@@ -22,7 +22,9 @@ const Edit = () => {
 
   return (
     <section>
+      {product.isLoading && <Loader />}
       {loader.isLoading && <Loader />}
+      {product.message.length > 0 && <PopUp message={loader.message} />}
       {loader.message.length > 0 && <PopUp message={loader.message} />}
       <MainLayout>
         <h1 className={styles.title}>Edit product</h1>
